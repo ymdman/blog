@@ -28,6 +28,7 @@ module.exports = {
       },
     },
     `gatsby-plugin-typescript`,
+    `gatsby-plugin-graphql-codegen`,
     {
       resolve: `gatsby-source-contentful`,
       options: {

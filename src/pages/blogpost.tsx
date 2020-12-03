@@ -15,9 +15,9 @@ const blogPostPage: React.FC<{ data: BlogPost }> = ({ data }) => (
     <h1>{ data.contentfulBlogPost.title }</h1>
     <time>{ data.contentfulBlogPost.publishDate }</time>
     <ul>
-      { data.contentfulBlogPost.tags?.map(tag => (
-        <li key={ tag }>{ tag }</li>
-      ))}
+      { data.contentfulBlogPost.category?.map(item => (
+        <li key={ item?.id }>{ item?.name }</li>
+      )) }
     </ul>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt sed ad harum culpa exercitationem maxime veritatis sunt cupiditate eaque, omnis reprehenderit nostrum reiciendis, temporibus dolore voluptates ullam magni tempore quis.</p>
     <p>Now go build something great.</p>
@@ -29,7 +29,11 @@ export const query = graphql`
     contentfulBlogPost {
       title
       publishDate(formatString: "YYYY年MM月DD日")
-      tags
+      category {
+        name
+        slug
+        id
+      }
     }
   }
 `

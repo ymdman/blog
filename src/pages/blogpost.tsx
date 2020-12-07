@@ -1,6 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import { ContentfulBlogPost } from '../../graphql-types';
+import { renderRichText } from 'gatsby-source-contentful/rich-text';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
@@ -14,6 +15,12 @@ const blogPostPage: React.FC<{ data: BlogPost }> = ({ data }) => (
     <SEO title="Home" />
     <h1>{data.contentfulBlogPost.title}</h1>
     <time>{data.contentfulBlogPost.publishDate}</time>
+    <div>
+      {renderRichText({
+        raw: data.contentfulBlogPost.content?.raw || '',
+        references: [],
+      })}
+    </div>
     <ul>
       {data.contentfulBlogPost.category?.map(item => (
         <li key={item?.id}>{item?.name}</li>
@@ -38,6 +45,9 @@ export const query = graphql`
         name
         slug
         id
+      }
+      content {
+        raw
       }
     }
   }

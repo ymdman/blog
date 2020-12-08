@@ -2,12 +2,21 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import { ContentfulBlogPost } from '../../graphql-types';
 import { renderRichText } from 'gatsby-source-contentful/rich-text';
-
+import { BLOCKS, NodeData } from '@contentful/rich-text-types';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 
 type BlogPost = {
   contentfulBlogPost: ContentfulBlogPost;
+};
+
+const options = {
+  renderNode: {
+    [BLOCKS.EMBEDDED_ASSET]: (node: NodeData) => {
+      const img = <img src={node.data.target.file.url} />;
+      return img;
+    },
+  },
 };
 
 const blogPostPage: React.FC<{ data: BlogPost }> = ({ data }) => (
@@ -16,23 +25,19 @@ const blogPostPage: React.FC<{ data: BlogPost }> = ({ data }) => (
     <h1>{data.contentfulBlogPost.title}</h1>
     <time>{data.contentfulBlogPost.publishDate}</time>
     <div>
-      {renderRichText({
-        raw: data.contentfulBlogPost.content?.raw || '',
-        references: [],
-      })}
+      {renderRichText(
+        {
+          raw: data.contentfulBlogPost.content?.raw || '',
+          references: data.contentfulBlogPost.content?.references as [],
+        },
+        options
+      )}
     </div>
     <ul>
       {data.contentfulBlogPost.category?.map(item => (
         <li key={item?.id}>{item?.name}</li>
       ))}
     </ul>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt sed ad
-      harum culpa exercitationem maxime veritatis sunt cupiditate eaque, omnis
-      reprehenderit nostrum reiciendis, temporibus dolore voluptates ullam magni
-      tempore quis.
-    </p>
-    <p>Now go build something great.</p>
   </Layout>
 );
 
@@ -48,6 +53,15 @@ export const query = graphql`
       }
       content {
         raw
+        references {
+          ... on ContentfulAsset {
+            contentful_id
+            __typename
+            file {
+              url
+            }
+          }
+        }
       }
     }
   }

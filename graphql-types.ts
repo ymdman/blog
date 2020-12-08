@@ -4213,7 +4213,14 @@ export type Unnamed_3_QueryVariables = Exact<{ [key: string]: never; }>;
 
 export type Unnamed_3_Query = { contentfulBlogPost?: Maybe<(
     Pick<ContentfulBlogPost, 'title' | 'publishDate'>
-    & { category?: Maybe<Array<Maybe<Pick<ContentfulCategory, 'name' | 'slug' | 'id'>>>>, content?: Maybe<Pick<ContentfulBlogPostContent, 'raw'>> }
+    & { category?: Maybe<Array<Maybe<Pick<ContentfulCategory, 'name' | 'slug' | 'id'>>>>, content?: Maybe<(
+      Pick<ContentfulBlogPostContent, 'raw'>
+      & { references?: Maybe<Array<Maybe<(
+        { __typename: 'ContentfulAsset' }
+        & Pick<ContentfulAsset, 'contentful_id'>
+        & { file?: Maybe<Pick<ContentfulAssetFile, 'url'>> }
+      )>>> }
+    )> }
   )> };
 
 export type Unnamed_4_QueryVariables = Exact<{ [key: string]: never; }>;

@@ -4228,6 +4228,11 @@ export type Unnamed_4_QueryVariables = Exact<{ [key: string]: never; }>;
 
 export type Unnamed_4_Query = { site?: Maybe<Pick<Site, 'buildTime'>> };
 
+export type Unnamed_5_QueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type Unnamed_5_Query = { allContentfulAsset: { nodes: Array<{ file?: Maybe<Pick<ContentfulAssetFile, 'url'>>, fluid?: Maybe<GatsbyContentfulFluid_WithWebpFragment> }> } };
+
 export type GatsbyContentfulFixedFragment = Pick<ContentfulFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 
 export type GatsbyContentfulFixed_TracedSvgFragment = Pick<ContentfulFixed, 'tracedSVG' | 'width' | 'height' | 'src' | 'srcSet'>;

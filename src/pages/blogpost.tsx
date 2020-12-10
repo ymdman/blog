@@ -5,6 +5,8 @@ import { renderRichText } from 'gatsby-source-contentful/rich-text';
 import { BLOCKS, NodeData } from '@contentful/rich-text-types';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
+import Img from 'gatsby-image';
+import useContentfulImage from '../utils/useContentfulImage';
 
 type BlogPost = {
   contentfulBlogPost: ContentfulBlogPost;
@@ -13,7 +15,7 @@ type BlogPost = {
 const options = {
   renderNode: {
     [BLOCKS.EMBEDDED_ASSET]: (node: NodeData) => {
-      const img = <img src={node.data.target.file.url} />;
+      const img = <Img fluid={useContentfulImage(node.data.target.file.url)} />;
       return img;
     },
   },

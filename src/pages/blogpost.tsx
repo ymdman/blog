@@ -19,6 +19,16 @@ const options = {
       return img;
     },
   },
+  renderText: (text: string) => {
+    const reducer = (
+      children: (string | false | JSX.Element)[],
+      textSegment: string,
+      index: number
+    ) => {
+      return [...children, index > 0 && <br key={index} />, textSegment];
+    };
+    return text.split('\n').reduce(reducer, []);
+  },
 };
 
 const blogPostPage: React.FC<{ data: BlogPost }> = ({ data }) => (

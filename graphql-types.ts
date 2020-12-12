@@ -4211,7 +4211,12 @@ export type Unnamed_2_Query = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSit
 export type Unnamed_3_QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type Unnamed_3_Query = { contentfulBlogPost?: Maybe<(
+export type Unnamed_3_Query = { site?: Maybe<Pick<Site, 'buildTime'>> };
+
+export type Unnamed_4_QueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type Unnamed_4_Query = { contentfulBlogPost?: Maybe<(
     Pick<ContentfulBlogPost, 'title' | 'publishDate'>
     & { category?: Maybe<Array<Maybe<Pick<ContentfulCategory, 'name' | 'slug' | 'id'>>>>, content?: Maybe<(
       Pick<ContentfulBlogPostContent, 'raw'>
@@ -4222,11 +4227,6 @@ export type Unnamed_3_Query = { contentfulBlogPost?: Maybe<(
       )>>> }
     )> }
   )> };
-
-export type Unnamed_4_QueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type Unnamed_4_Query = { site?: Maybe<Pick<Site, 'buildTime'>> };
 
 export type Unnamed_5_QueryVariables = Exact<{ [key: string]: never; }>;
 

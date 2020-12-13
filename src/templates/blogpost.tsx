@@ -54,8 +54,8 @@ const blogPostPage: React.FC<{ data: BlogPost }> = ({ data }) => (
 );
 
 export const query = graphql`
-  query {
-    contentfulBlogPost {
+  query($id: String!) {
+    contentfulBlogPost(id: { eq: $id }) {
       title
       publishDate(formatString: "YYYY年MM月DD日")
       category {

@@ -10,6 +10,7 @@ import React from 'react';
 // import { useStaticQuery, graphql } from "gatsby"
 
 import Header from './header';
+import 'modern-css-reset';
 import './layout.css';
 
 const Layout: React.FC = ({ children }) => {

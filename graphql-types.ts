@@ -3568,10 +3568,34 @@ export type SitePageConnectionGroupArgs = {
 
 export type SitePageContext = {
   id?: Maybe<Scalars['String']>;
+  next?: Maybe<SitePageContextNext>;
+  previous?: Maybe<SitePageContextPrevious>;
 };
 
 export type SitePageContextFilterInput = {
   id?: Maybe<StringQueryOperatorInput>;
+  next?: Maybe<SitePageContextNextFilterInput>;
+  previous?: Maybe<SitePageContextPreviousFilterInput>;
+};
+
+export type SitePageContextNext = {
+  slug?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+};
+
+export type SitePageContextNextFilterInput = {
+  slug?: Maybe<StringQueryOperatorInput>;
+  title?: Maybe<StringQueryOperatorInput>;
+};
+
+export type SitePageContextPrevious = {
+  title?: Maybe<Scalars['String']>;
+  slug?: Maybe<Scalars['String']>;
+};
+
+export type SitePageContextPreviousFilterInput = {
+  title?: Maybe<StringQueryOperatorInput>;
+  slug?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SitePageEdge = {
@@ -3674,6 +3698,10 @@ export type SitePageFieldsEnum =
   | 'internal___type'
   | 'isCreatedByStatefulCreatePages'
   | 'context___id'
+  | 'context___next___slug'
+  | 'context___next___title'
+  | 'context___previous___title'
+  | 'context___previous___slug'
   | 'pluginCreator___id'
   | 'pluginCreator___parent___id'
   | 'pluginCreator___parent___parent___id'

@@ -1,6 +1,6 @@
 import React from 'react';
-import { graphql } from 'gatsby';
-import { ContentfulBlogPost } from '../../graphql-types';
+import { graphql, Link } from 'gatsby';
+import { ContentfulBlogPost, SitePageContext } from '../../graphql-types';
 import { renderRichText } from 'gatsby-source-contentful/rich-text';
 import { BLOCKS, NodeData } from '@contentful/rich-text-types';
 import Layout from '../components/layout';
@@ -9,7 +9,10 @@ import Img from 'gatsby-image';
 import useContentfulImage from '../utils/useContentfulImage';
 
 type BlogPost = {
-  contentfulBlogPost: ContentfulBlogPost;
+  data: {
+    contentfulBlogPost: ContentfulBlogPost;
+  };
+  pageContext: SitePageContext;
 };
 
 const options = {
@@ -31,7 +34,7 @@ const options = {
   },
 };
 
-const blogPostPage: React.FC<{ data: BlogPost }> = ({ data }) => (
+const blogPostPage: React.FC<BlogPost> = ({ data, pageContext }) => (
   <Layout>
     <SEO title="Home" />
     <h1>{data.contentfulBlogPost.title}</h1>
@@ -50,6 +53,22 @@ const blogPostPage: React.FC<{ data: BlogPost }> = ({ data }) => (
         <li key={item?.id}>{item?.name}</li>
       ))}
     </ul>
+    <div>
+      {pageContext.previous && (
+        <div>
+          <Link to={`/blog/post/${pageContext.previous.slug}`}>
+            {pageContext.previous.title}
+          </Link>
+        </div>
+      )}
+      {pageContext.next && (
+        <div>
+          <Link to={`/blog/post/${pageContext.next.slug}`}>
+            {pageContext.next.title}
+          </Link>
+        </div>
+      )}
+    </div>
   </Layout>
 );
 

@@ -32,6 +32,7 @@ module.exports = {
     // `gatsby-plugin-offline`,
     `gatsby-plugin-typescript`,
     `gatsby-plugin-graphql-codegen`,
+    `gatsby-plugin-emotion`,
     {
       resolve: 'gatsby-plugin-eslint',
       options: {

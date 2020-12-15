@@ -2,13 +2,13 @@ import React from 'react';
 import { Link } from 'gatsby';
 import { css } from '@emotion/react';
 
-const underline = css`
+const header = css`
   text-decoration: underline;
   background-color: var(--color-theme);
 `;
 
 const Header = () => (
-  <header css={underline}>
+  <header css={header}>
     <div>
       <h1>
         <Link to="/">YamaMemo</Link>
@@ -16,9 +16,5 @@ const Header = () => (
     </div>
   </header>
 );
-
-// Header.defaultProps = {
-//   siteTitle: ``,
-// }
 
 export default Header;

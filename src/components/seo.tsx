@@ -81,7 +81,7 @@ function SEO({ description, lang, meta, title }: Seo) {
 }
 
 SEO.defaultProps = {
-  lang: `en`,
+  lang: `ja`,
   meta: [],
   description: ``,
 };

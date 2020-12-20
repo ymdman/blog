@@ -14,6 +14,9 @@ type BlogPost = {
     contentfulBlogPost: ContentfulBlogPost;
   };
   pageContext: SitePageContext;
+  location: {
+    pathname: string;
+  };
 };
 
 const options = {
@@ -35,7 +38,7 @@ const options = {
   },
 };
 
-const blogPostPage: React.FC<BlogPost> = ({ data, pageContext }) => {
+const blogPostPage: React.FC<BlogPost> = ({ data, pageContext, location }) => {
   return (
     <Layout>
       <SEO
@@ -43,6 +46,7 @@ const blogPostPage: React.FC<BlogPost> = ({ data, pageContext }) => {
         description={`${documentToPlainTextString(
           JSON.parse(data.contentfulBlogPost.content?.raw || '')
         ).slice(0, 70)}…`}
+        pagePath={location.pathname}
       />
       <h1>{data.contentfulBlogPost.title}</h1>
       <time>{data.contentfulBlogPost.publishDate}</time>

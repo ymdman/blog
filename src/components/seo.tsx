@@ -7,9 +7,10 @@ type Seo = {
   lang: string;
   title: string;
   meta: [];
+  pagePath?: string;
 };
 
-function SEO({ description, lang, meta, title }: Seo) {
+function SEO({ description, lang, meta, title, pagePath }: Seo) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -36,35 +37,39 @@ function SEO({ description, lang, meta, title }: Seo) {
       titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : undefined}
       meta={[
         {
-          name: `description`,
+          name: 'description',
           content: metaDescription,
         },
         {
-          property: `og:title`,
+          property: 'og:title',
           content: title,
         },
         {
-          property: `og:description`,
+          property: 'og:description',
           content: metaDescription,
         },
         {
-          property: `og:type`,
-          content: `website`,
+          property: 'og:type',
+          content: 'website',
         },
         {
-          name: `twitter:card`,
-          content: `summary`,
+          property: 'og:url',
+          content: pagePath,
         },
         {
-          name: `twitter:creator`,
-          content: site.siteMetadata?.author || ``,
+          name: 'twitter:card',
+          content: 'summary',
         },
         {
-          name: `twitter:title`,
+          name: 'twitter:creator',
+          content: site.siteMetadata?.author || '',
+        },
+        {
+          name: 'twitter:title',
           content: title,
         },
         {
-          name: `twitter:description`,
+          name: 'twitter:description',
           content: metaDescription,
         },
       ].concat(meta)}
@@ -73,9 +78,9 @@ function SEO({ description, lang, meta, title }: Seo) {
 }
 
 SEO.defaultProps = {
-  lang: `ja`,
+  lang: 'ja',
   meta: [],
-  description: ``,
+  description: '',
 };
 
 export default SEO;

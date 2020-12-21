@@ -4264,12 +4264,17 @@ export type Unnamed_2_QueryVariables = Exact<{ [key: string]: never; }>;
 
 export type Unnamed_2_Query = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author'>> }> };
 
-export type Unnamed_3_QueryVariables = Exact<{
+export type Unnamed_3_QueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type Unnamed_3_Query = { allContentfulBlogPost: { edges: Array<{ node: Pick<ContentfulBlogPost, 'title' | 'id' | 'slug'> }> } };
+
+export type Unnamed_4_QueryVariables = Exact<{
   id: Scalars['String'];
 }>;
 
 
-export type Unnamed_3_Query = { contentfulBlogPost?: Maybe<(
+export type Unnamed_4_Query = { contentfulBlogPost?: Maybe<(
     Pick<ContentfulBlogPost, 'title' | 'publishDate'>
     & { category?: Maybe<Array<Maybe<Pick<ContentfulCategory, 'name' | 'slug' | 'id'>>>>, content?: Maybe<(
       Pick<ContentfulBlogPostContent, 'raw'>
@@ -4281,10 +4286,10 @@ export type Unnamed_3_Query = { contentfulBlogPost?: Maybe<(
     )> }
   )> };
 
-export type Unnamed_4_QueryVariables = Exact<{ [key: string]: never; }>;
+export type Unnamed_5_QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type Unnamed_4_Query = { allContentfulAsset: { nodes: Array<{ file?: Maybe<Pick<ContentfulAssetFile, 'url'>>, fluid?: Maybe<GatsbyContentfulFluid_WithWebpFragment> }> } };
+export type Unnamed_5_Query = { allContentfulAsset: { nodes: Array<{ file?: Maybe<Pick<ContentfulAssetFile, 'url'>>, fluid?: Maybe<GatsbyContentfulFluid_WithWebpFragment> }> } };
 
 export type GatsbyContentfulFixedFragment = Pick<ContentfulFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 

@@ -19,4 +19,8 @@ const color = {
   fontPrimary: '#242424',
 };
 
-export { fontSize, lineHeight, color };
+const layout = {
+  desktopHeaderHeight: '70px',
+};
+
+export { fontSize, lineHeight, color, layout };

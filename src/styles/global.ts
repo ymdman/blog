@@ -13,6 +13,14 @@ const globalStyle = css`
     line-height: ${lineHeight.medium};
     color: ${color.fontPrimary};
   }
+
+  a {
+    text-decoration: none;
+  }
+
+  svg {
+    fill: currentColor;
+  }
 `;
 
 export default globalStyle;

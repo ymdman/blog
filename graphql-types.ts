@@ -4267,7 +4267,10 @@ export type Unnamed_2_Query = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSit
 export type Unnamed_3_QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type Unnamed_3_Query = { allContentfulBlogPost: { edges: Array<{ node: Pick<ContentfulBlogPost, 'title' | 'id' | 'slug'> }> } };
+export type Unnamed_3_Query = { allContentfulBlogPost: { edges: Array<{ node: (
+        Pick<ContentfulBlogPost, 'title' | 'id' | 'slug' | 'publishDate'>
+        & { category?: Maybe<Array<Maybe<Pick<ContentfulCategory, 'name' | 'slug' | 'id'>>>> }
+      ) }> } };
 
 export type Unnamed_4_QueryVariables = Exact<{
   id: Scalars['String'];

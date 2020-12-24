@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 import IconGitHub from './icons/github';
 import { css } from '@emotion/react';
-import { layout } from '../styles/settings';
+import { color, fontSize, layout } from '../styles/settings';
 
 const header = css`
   display: flex;
@@ -15,13 +15,24 @@ const header = css`
   height: ${layout.desktopHeaderHeight};
   padding: 0 50px;
   box-sizing: border-box;
+
+  @media screen and (max-width: ${layout.threshold}px) {
+    height: ${layout.mobileHeaderHeight};
+    padding: 0 10px;
+  }
 `;
 
 const logo = css`
-  font-size: var(--fs-medium);
+  font-size: ${fontSize.xLarge};
+  font-weight: bold;
+
+  @media screen and (max-width: ${layout.threshold}px) {
+    font-size: ${fontSize.medium};
+  }
 `;
 
 const anchor = css`
+  color: ${color.font.primary};
   text-decoration: none;
 `;
 
@@ -33,29 +44,55 @@ const list = css`
   li + li {
     margin-left: 45px;
   }
+
+  @media screen and (max-width: ${layout.threshold}px) {
+    font-size: ${fontSize.small};
+
+    li + li {
+      margin-left: 20px;
+    }
+  }
 `;
 
-const Header = () => (
-  <header css={header}>
-    <h1 css={logo}>
-      <Link to="/" css={anchor}>
-        ymdmanMemo
-      </Link>
-    </h1>
-    <nav>
-      <ul css={list}>
-        <li>About</li>
-        <li>
-          <Link to="/blog">Blog</Link>
-        </li>
-        <li>
-          <a href="https://github.com/ymdman" rel="noreferrer" target="_blank">
-            <IconGitHub width={22} height={22} />
-          </a>
-        </li>
-      </ul>
-    </nav>
-  </header>
-);
+const icon = css`
+  display: flex;
+`;
+
+const Header = () => {
+  const isDesktop = window.innerWidth >= layout.threshold;
+
+  return (
+    <header css={header}>
+      <h1 css={logo}>
+        <Link to="/" css={anchor}>
+          ymdmanMemo
+        </Link>
+      </h1>
+      <nav>
+        <ul css={list}>
+          <li>About</li>
+          <li>
+            <Link to="/blog" css={anchor}>
+              Blog
+            </Link>
+          </li>
+          <li>
+            <a
+              href="https://github.com/ymdman"
+              rel="noreferrer"
+              target="_blank"
+              css={[anchor, icon]}
+            >
+              <IconGitHub
+                width={isDesktop ? 22 : 18}
+                height={isDesktop ? 22 : 18}
+              />
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+  );
+};
 
 export default Header;

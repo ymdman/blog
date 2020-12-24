@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import { fontSize, lineHeight, color } from './settings';
+import { fontSize, color } from './settings';
 
 const globalStyle = css`
   html {
@@ -10,8 +10,8 @@ const globalStyle = css`
     font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN',
       'Hiragino Sans', Meiryo, sans-serif;
     font-size: ${fontSize.medium};
-    line-height: ${lineHeight.medium};
-    color: ${color.fontPrimary};
+    line-height: 1.4;
+    color: ${color.font.primary};
   }
 
   a {

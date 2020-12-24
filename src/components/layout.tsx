@@ -7,13 +7,18 @@ import globalStyle from '../styles/global';
 import { layout } from '../styles/settings';
 
 const container = css`
-  width: 1000px;
+  max-width: 1100px;
   margin: 0 auto;
+  padding: ${layout.desktopHeaderHeight} 50px 10px;
+  box-sizing: border-box;
+
+  @media screen and (max-width: ${layout.threshold}px) {
+    max-width: none;
+    padding: ${layout.mobileHeaderHeight} 10px 10px;
+  }
 `;
 
-const main = css`
-  padding-top: ${layout.desktopHeaderHeight};
-`;
+const main = css``;
 
 const Layout: React.FC = ({ children }) => {
   return (

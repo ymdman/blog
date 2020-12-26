@@ -33,7 +33,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     ({ node, next, previous }) => {
       createPage({
         path: `/blog/post/${node.slug}`,
-        component: path.resolve('./src/templates/blogpost.tsx'),
+        component: path.resolve('./src/templates/blogPost.tsx'),
         context: {
           id: node.id,
           next,

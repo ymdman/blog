@@ -2,16 +2,26 @@ import React from 'react';
 import { graphql, Link } from 'gatsby';
 import { ContentfulBlogPost, SitePageContext } from '../../graphql-types';
 import { BLOCKS, NodeData } from '@contentful/rich-text-types';
-import { renderRichText } from 'gatsby-source-contentful/rich-text';
+import {
+  renderRichText,
+  ContentfulRichTextGatsbyReference,
+} from 'gatsby-source-contentful/rich-text';
 import { documentToPlainTextString } from '@contentful/rich-text-plain-text-renderer';
 import useContentfulImage from '../utils/useContentfulImage';
 import Img from 'gatsby-image';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 
+type RenderRichTextData = {
+  content: {
+    raw: string;
+    references: ContentfulRichTextGatsbyReference[];
+  };
+};
+
 type BlogPost = {
   data: {
-    contentfulBlogPost: ContentfulBlogPost;
+    contentfulBlogPost: ContentfulBlogPost & RenderRichTextData;
   };
   pageContext: SitePageContext;
   location: {
@@ -50,15 +60,7 @@ const blogPostPage: React.FC<BlogPost> = ({ data, pageContext, location }) => {
       />
       <h1>{data.contentfulBlogPost.title}</h1>
       <time>{data.contentfulBlogPost.publishDate}</time>
-      <div>
-        {renderRichText(
-          {
-            raw: data.contentfulBlogPost.content?.raw || '',
-            references: data.contentfulBlogPost.content?.references as [],
-          },
-          options
-        )}
-      </div>
+      <div>{renderRichText(data.contentfulBlogPost.content, options)}</div>
       <ul>
         {data.contentfulBlogPost.category?.map(item => (
           <li key={item?.id}>{item?.name}</li>

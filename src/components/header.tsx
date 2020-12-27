@@ -58,16 +58,37 @@ const icon = css`
   display: flex;
 `;
 
+const LogoPrimary = () => {
+  return (
+    <h1 css={logo}>
+      <Title />
+    </h1>
+  );
+};
+
+const LogoSecondary = () => {
+  return (
+    <p css={logo}>
+      <Title />
+    </p>
+  );
+};
+
+const Title = () => {
+  return (
+    <Link to="/" css={anchor}>
+      ymdmanMemo
+    </Link>
+  );
+};
+
 const Header = () => {
   const isDesktop = window.innerWidth >= layout.threshold;
+  const isTopPage = window.location.pathname === '/';
 
   return (
     <header css={header}>
-      <h1 css={logo}>
-        <Link to="/" css={anchor}>
-          ymdmanMemo
-        </Link>
-      </h1>
+      {isTopPage ? <LogoPrimary /> : <LogoSecondary />}
       <nav>
         <ul css={list}>
           <li>About</li>

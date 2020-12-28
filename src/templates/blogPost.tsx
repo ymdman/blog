@@ -10,6 +10,7 @@ import { documentToPlainTextString } from '@contentful/rich-text-plain-text-rend
 import useContentfulImage from '../utils/useContentfulImage';
 import Img from 'gatsby-image';
 import Layout from '../components/layout';
+import Tags from '../components/tags';
 import SEO from '../components/seo';
 
 type RenderRichTextData = {
@@ -61,11 +62,7 @@ const blogPostPage: React.FC<BlogPost> = ({ data, pageContext, location }) => {
       <h1>{data.contentfulBlogPost.title}</h1>
       <time>{data.contentfulBlogPost.publishDate}</time>
       <div>{renderRichText(data.contentfulBlogPost.content, options)}</div>
-      <ul>
-        {data.contentfulBlogPost.category?.map(item => (
-          <li key={item?.id}>{item?.name}</li>
-        ))}
-      </ul>
+      <Tags category={data.contentfulBlogPost.category} />
       <div>
         {pageContext.previous && (
           <div>

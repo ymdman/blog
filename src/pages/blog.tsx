@@ -27,8 +27,6 @@ const title = css`
 `;
 
 const Blog: React.FC<Blog> = ({ data, location }) => {
-  console.log(data.allContentfulBlogPost.edges);
-
   return (
     <Layout>
       <SEO title="Blog" description="" pagePath={location.pathname} />

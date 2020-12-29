@@ -2,6 +2,11 @@ const color = {
   theme: 'tomato',
   font: {
     primary: '#242424',
+    secondary: '#f3f3f3',
+  },
+  background: {
+    primary: '#ececec',
+    secondary: '#151515',
   },
 };
 

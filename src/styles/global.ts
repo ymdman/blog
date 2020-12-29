@@ -12,6 +12,11 @@ const globalStyle = css`
     font-size: ${fontSize.medium};
     line-height: 1.4;
     color: ${color.font.primary};
+
+    @media (prefers-color-scheme: dark) {
+      color: ${color.font.secondary};
+      background-color: ${color.background.secondary};
+    }
   }
 
   a {

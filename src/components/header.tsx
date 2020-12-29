@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 import IconGitHub from './icons/github';
 import { css } from '@emotion/react';
-import { color, fontSize, layout } from '../styles/settings';
+import { fontSize, layout } from '../styles/settings';
 
 const header = css`
   display: flex;
@@ -32,7 +32,7 @@ const logo = css`
 `;
 
 const anchor = css`
-  color: ${color.font.primary};
+  color: inherit;
   text-decoration: none;
 `;
 
@@ -42,7 +42,7 @@ const list = css`
   list-style: none;
 
   li + li {
-    margin-left: 45px;
+    margin-left: 50px;
   }
 
   @media screen and (max-width: ${layout.threshold}px) {

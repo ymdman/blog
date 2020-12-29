@@ -1,7 +1,7 @@
 import React from 'react';
 import { ContentfulCategory } from '../../graphql-types';
 import { css } from '@emotion/react';
-import { fontSize } from '../styles/settings';
+import { color, fontSize } from '../styles/settings';
 
 type Category = {
   category?: (ContentfulCategory | null)[] | null;
@@ -10,16 +10,17 @@ type Category = {
 const tags = css`
   display: flex;
   font-size: ${fontSize.xSmall};
-
-  > li + li {
-    margin-left: 5px;
-  }
 `;
 
 const tag = css`
   padding: 2px 5px;
-  background-color: #555;
-  color: #fff;
+  border-radius: 3px;
+  background-color: ${color.background.primary};
+  color: ${color.font.primary};
+
+  & + & {
+    margin-left: 5px;
+  }
 `;
 
 const Tags: React.FC<Category> = ({ category }) => {

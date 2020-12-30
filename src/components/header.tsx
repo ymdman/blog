@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
+import useDeviceChecked from '../hooks/useDeviceChecked';
 import IconGitHub from './icons/github';
 import { css } from '@emotion/react';
 import { fontSize, layout } from '../styles/settings';
@@ -83,7 +84,7 @@ const Title = () => {
 };
 
 const Header = () => {
-  const isDesktop = window.innerWidth >= layout.threshold;
+  const isDesktop = useDeviceChecked() === 'desktop';
   const isTopPage = window.location.pathname === '/';
 
   return (

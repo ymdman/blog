@@ -26,4 +26,8 @@ const layout = {
   mobileHeaderHeight: '50px',
 };
 
-export { color, fontSize, layout };
+const zIndex = {
+  header: 1,
+};
+
+export { color, fontSize, layout, zIndex };

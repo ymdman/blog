@@ -3,7 +3,7 @@ import { Link } from 'gatsby';
 import useDeviceChecked from '../hooks/useDeviceChecked';
 import IconGitHub from './icons/github';
 import { css } from '@emotion/react';
-import { fontSize, layout } from '../styles/settings';
+import { fontSize, layout, zIndex } from '../styles/settings';
 
 const header = css`
   display: flex;
@@ -12,6 +12,7 @@ const header = css`
   position: fixed;
   top: 0;
   left: 0;
+  z-index: ${zIndex.header};
   width: 100%;
   height: ${layout.desktopHeaderHeight};
   padding: 0 50px;

@@ -13,9 +13,10 @@ const useDeviceChecked = (): Device => {
     const updateDevice = () => {
       setDevice(window.innerWidth >= layout.threshold ? 'desktop' : 'mobile');
     };
-    window.addEventListener('resize', throttle(updateDevice, 1000));
+    const throttledUpdateDevice = throttle(updateDevice, 1000);
+    window.addEventListener('resize', throttledUpdateDevice);
 
-    return () => window.removeEventListener('resize', updateDevice);
+    return () => window.removeEventListener('resize', throttledUpdateDevice);
   }, []);
 
   return device;

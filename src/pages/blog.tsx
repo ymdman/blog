@@ -3,6 +3,7 @@ import { graphql, Link } from 'gatsby';
 import { ContentfulBlogPostConnection } from '../../graphql-types';
 import Layout from '../components/layout';
 import Tags from '../components/tags';
+import Time from '../components/time';
 import SEO from '../components/seo';
 import { css } from '@emotion/react';
 import { fontSize } from '../styles/settings';
@@ -16,14 +17,18 @@ type Blog = {
   };
 };
 
-const blog = css`
-  > div + div {
-    margin-top: 60px;
-  }
+const title = css`
+  font-size: ${fontSize.xxxLarge};
 `;
 
-const title = css`
-  font-size: ${fontSize.xxLarge};
+const blog = css`
+  margin-top: 60px;
+`;
+
+const section = css`
+  & + & {
+    margin-top: 60px;
+  }
 `;
 
 const Blog: React.FC<Blog> = ({ data, location }) => {
@@ -32,13 +37,15 @@ const Blog: React.FC<Blog> = ({ data, location }) => {
       <SEO title="Blog" description="" pagePath={location.pathname} />
       <div css={blog}>
         {data.allContentfulBlogPost.edges.map(({ node }) => (
-          <div key={node.id}>
+          <section key={node.id} css={section}>
             <h2 css={title}>
               <Link to={`/blog/post/${node.slug}`}>{node.title}</Link>
             </h2>
-            <time>{node.publishDate}</time>
-            <Tags category={node.category} />
-          </div>
+            <div>
+              <Time publishDate={node.publishDate} />
+              <Tags category={node.category} />
+            </div>
+          </section>
         ))}
       </div>
     </Layout>

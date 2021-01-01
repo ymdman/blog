@@ -11,6 +11,7 @@ import useContentfulImage from '../utils/useContentfulImage';
 import Img from 'gatsby-image';
 import Layout from '../components/layout';
 import Tags from '../components/tags';
+import Time from '../components/time';
 import SEO from '../components/seo';
 
 type RenderRichTextData = {
@@ -60,7 +61,7 @@ const blogPostPage: React.FC<BlogPost> = ({ data, pageContext, location }) => {
         pagePath={location.pathname}
       />
       <h1>{data.contentfulBlogPost.title}</h1>
-      <time>{data.contentfulBlogPost.publishDate}</time>
+      <Time publishDate={data.contentfulBlogPost.publishDate} />
       <div>{renderRichText(data.contentfulBlogPost.content, options)}</div>
       <Tags category={data.contentfulBlogPost.category} />
       <div>

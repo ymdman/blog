@@ -2,6 +2,7 @@ import React from 'react';
 import { graphql, Link } from 'gatsby';
 import { ContentfulBlogPostConnection } from '../../graphql-types';
 import Layout from '../components/layout';
+import Heading from '../components/heading';
 import Tags from '../components/tags';
 import Time from '../components/time';
 import SEO from '../components/seo';
@@ -35,6 +36,7 @@ const Blog: React.FC<Blog> = ({ data, location }) => {
   return (
     <Layout>
       <SEO title="Blog" description="" pagePath={location.pathname} />
+      <Heading label={'Blog'} />
       <div css={blog}>
         {data.allContentfulBlogPost.edges.map(({ node }) => (
           <section key={node.id} css={section}>

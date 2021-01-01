@@ -10,6 +10,7 @@ import { documentToPlainTextString } from '@contentful/rich-text-plain-text-rend
 import useContentfulImage from '../utils/useContentfulImage';
 import Img from 'gatsby-image';
 import Layout from '../components/layout';
+import Heading from '../components/heading';
 import Tags from '../components/tags';
 import Time from '../components/time';
 import SEO from '../components/seo';
@@ -60,7 +61,7 @@ const blogPostPage: React.FC<BlogPost> = ({ data, pageContext, location }) => {
         ).slice(0, 70)}…`}
         pagePath={location.pathname}
       />
-      <h1>{data.contentfulBlogPost.title}</h1>
+      <Heading label={data.contentfulBlogPost.title} />
       <Time publishDate={data.contentfulBlogPost.publishDate} />
       <div>{renderRichText(data.contentfulBlogPost.content, options)}</div>
       <Tags category={data.contentfulBlogPost.category} />

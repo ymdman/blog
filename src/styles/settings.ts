@@ -11,7 +11,9 @@ const color = {
 };
 
 const fontSize = {
-  xxxLarge: '3rem',
+  xxxxxLarge: '3.6rem',
+  xxxxLarge: '3.2rem',
+  xxxLarge: '2.8rem',
   xxLarge: '2.4rem',
   xLarge: '2rem',
   large: '1.8rem',
@@ -22,8 +24,11 @@ const fontSize = {
 
 const layout = {
   threshold: 640,
-  desktopHeaderHeight: '70px',
-  mobileHeaderHeight: '50px',
+  desktopContentWidth: 1000,
+  desktopContentSideSize: 50,
+  mobileContentSideSize: 15,
+  desktopHeaderHeight: 70,
+  mobileHeaderHeight: 50,
 };
 
 const zIndex = {

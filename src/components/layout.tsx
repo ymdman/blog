@@ -7,18 +7,32 @@ import globalStyle from '../styles/global';
 import { layout } from '../styles/settings';
 
 const container = css`
-  max-width: 1100px;
+  display: flex;
+  flex-direction: column;
+  max-width: ${layout.desktopContentWidth}px;
+  min-height: 100vh;
   margin: 0 auto;
-  padding: ${layout.desktopHeaderHeight} 50px 10px;
+  padding-top: ${layout.desktopHeaderHeight}px;
+  padding-bottom: 10px;
   box-sizing: border-box;
 
-  @media screen and (max-width: ${layout.threshold}px) {
+  @media screen and (max-width: ${layout.desktopContentWidth +
+    layout.desktopContentSideSize * 2}px) {
     max-width: none;
-    padding: ${layout.mobileHeaderHeight} 10px 10px;
+    padding-right: ${layout.desktopContentSideSize}px;
+    padding-left: ${layout.desktopContentSideSize}px;
+  }
+
+  @media screen and (max-width: ${layout.threshold}px) {
+    padding: ${layout.mobileHeaderHeight}px ${layout.mobileContentSideSize}px
+      10px;
   }
 `;
 
-const main = css``;
+const main = css`
+  flex: 1;
+  margin-top: 60px;
+`;
 
 const Layout: React.FC = ({ children }) => {
   return (

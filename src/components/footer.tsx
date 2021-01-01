@@ -2,7 +2,8 @@ import React from 'react';
 import { css } from '@emotion/react';
 import { fontSize, layout } from '../styles/settings';
 
-const footer = css`
+const container = css`
+  margin-top: 60px;
   text-align: center;
 `;
 
@@ -16,7 +17,7 @@ const copyright = css`
 
 const Footer = () => {
   return (
-    <footer css={footer}>
+    <footer css={container}>
       <small css={copyright}>
         © {new Date().getFullYear()} ymdmanMemo All Right Reserved.
       </small>

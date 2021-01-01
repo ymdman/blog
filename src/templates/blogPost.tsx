@@ -7,7 +7,7 @@ import {
   ContentfulRichTextGatsbyReference,
 } from 'gatsby-source-contentful/rich-text';
 import { documentToPlainTextString } from '@contentful/rich-text-plain-text-renderer';
-import useContentfulImage from '../utils/useContentfulImage';
+import useContentfulImage from '../hooks/useContentfulImage';
 import Img from 'gatsby-image';
 import Layout from '../components/layout';
 import Heading from '../components/heading';

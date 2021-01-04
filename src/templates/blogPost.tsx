@@ -11,6 +11,7 @@ import useContentfulImage from '../hooks/useContentfulImage';
 import Img from 'gatsby-image';
 import Layout from '../components/layout';
 import Heading from '../components/heading';
+import Article from '../components/article';
 import Tags from '../components/tags';
 import Time from '../components/time';
 import SEO from '../components/seo';
@@ -62,25 +63,27 @@ const blogPostPage: React.FC<BlogPost> = ({ data, pageContext, location }) => {
         pagePath={location.pathname}
       />
       <Heading label={data.contentfulBlogPost.title} />
-      <Time publishDate={data.contentfulBlogPost.publishDate} />
-      <div>{renderRichText(data.contentfulBlogPost.content, options)}</div>
-      <Tags category={data.contentfulBlogPost.category} />
-      <div>
-        {pageContext.previous && (
-          <div>
-            <Link to={`/blog/post/${pageContext.previous.slug}`}>
-              {pageContext.previous.title}
-            </Link>
-          </div>
-        )}
-        {pageContext.next && (
-          <div>
-            <Link to={`/blog/post/${pageContext.next.slug}`}>
-              {pageContext.next.title}
-            </Link>
-          </div>
-        )}
-      </div>
+      <Article>
+        <Time publishDate={data.contentfulBlogPost.publishDate} />
+        <div>{renderRichText(data.contentfulBlogPost.content, options)}</div>
+        <Tags category={data.contentfulBlogPost.category} />
+        <div>
+          {pageContext.previous && (
+            <div>
+              <Link to={`/blog/post/${pageContext.previous.slug}`}>
+                {pageContext.previous.title}
+              </Link>
+            </div>
+          )}
+          {pageContext.next && (
+            <div>
+              <Link to={`/blog/post/${pageContext.next.slug}`}>
+                {pageContext.next.title}
+              </Link>
+            </div>
+          )}
+        </div>
+      </Article>
     </Layout>
   );
 };

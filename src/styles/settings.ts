@@ -8,6 +8,9 @@ const color = {
     primary: '#ececec',
     secondary: '#151515',
   },
+  border: {
+    primary: '#e2e2e2',
+  },
 };
 
 const fontSize = {

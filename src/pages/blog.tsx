@@ -3,11 +3,12 @@ import { graphql, Link } from 'gatsby';
 import { ContentfulBlogPostConnection } from '../../graphql-types';
 import Layout from '../components/layout';
 import Heading from '../components/heading';
+import Article from '../components/article';
 import Tags from '../components/tags';
 import Time from '../components/time';
 import SEO from '../components/seo';
 import { css } from '@emotion/react';
-import { fontSize } from '../styles/settings';
+import { color, fontSize, layout } from '../styles/settings';
 
 type Blog = {
   data: {
@@ -20,16 +21,37 @@ type Blog = {
 
 const title = css`
   font-size: ${fontSize.xxxLarge};
+
+  @media screen and (max-width: ${layout.threshold}px) {
+    font-size: ${fontSize.xLarge};
+  }
 `;
 
-const blog = css`
-  margin-top: 60px;
+const anchor = css`
+  color: ${color.font.primary};
+
+  &:hover {
+    opacity: 0.6;
+  }
 `;
 
 const section = css`
   & + & {
     margin-top: 60px;
+    padding-top: 60px;
+    border-top: solid 1px ${color.border.primary};
   }
+
+  @media screen and (max-width: ${layout.threshold}px) {
+    & + & {
+      margin-top: 35px;
+      padding-top: 35px;
+    }
+  }
+`;
+
+const tags = css`
+  margin-top: 10px;
 `;
 
 const Blog: React.FC<Blog> = ({ data, location }) => {
@@ -37,19 +59,21 @@ const Blog: React.FC<Blog> = ({ data, location }) => {
     <Layout>
       <SEO title="Blog" description="" pagePath={location.pathname} />
       <Heading label={'Blog'} />
-      <div css={blog}>
+      <Article>
         {data.allContentfulBlogPost.edges.map(({ node }) => (
           <section key={node.id} css={section}>
             <h2 css={title}>
-              <Link to={`/blog/post/${node.slug}`}>{node.title}</Link>
+              <Link to={`/blog/post/${node.slug}`} css={anchor}>
+                {node.title}
+              </Link>
             </h2>
-            <div>
-              <Time publishDate={node.publishDate} />
+            <Time publishDate={node.publishDate} />
+            <div css={tags}>
               <Tags category={node.category} />
             </div>
           </section>
         ))}
-      </div>
+      </Article>
     </Layout>
   );
 };

@@ -3,6 +3,7 @@ import { graphql } from 'gatsby';
 import { ContentfulAboutConnection } from '../../graphql-types';
 import Layout from '../components/layout';
 import Heading from '../components/heading';
+import Article from '../components/article';
 import SEO from '../components/seo';
 
 type About = {
@@ -18,10 +19,12 @@ const About: React.FC<About> = ({ data }) => {
     <Layout>
       <SEO title="About" />
       <Heading label={'About'} />
-      <h2>This Site</h2>
-      <p>{node.site?.internal.content}</p>
-      <h2>Profile</h2>
-      <p>{node.profile?.internal.content}</p>
+      <Article>
+        <h2>This Site</h2>
+        <p>{node.site?.internal.content}</p>
+        <h2>Profile</h2>
+        <p>{node.profile?.internal.content}</p>
+      </Article>
     </Layout>
   );
 };

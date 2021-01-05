@@ -3,14 +3,14 @@ import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 
 type Seo = {
-  description: string;
-  lang: string;
-  title: string;
-  meta: [];
+  description?: string;
+  lang?: string;
+  title?: string;
+  meta?: HTMLMetaElement[];
   pagePath?: string;
 };
 
-function SEO({ description, lang, meta, title, pagePath }: Seo) {
+const SEO: React.FC<Seo> = ({ description, lang, meta, title, pagePath }) => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -72,10 +72,10 @@ function SEO({ description, lang, meta, title, pagePath }: Seo) {
           name: 'twitter:description',
           content: metaDescription,
         },
-      ].concat(meta)}
+      ].concat(meta!)}
     />
   );
-}
+};
 
 SEO.defaultProps = {
   lang: 'ja',

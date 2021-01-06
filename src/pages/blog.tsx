@@ -3,12 +3,14 @@ import { graphql, Link } from 'gatsby';
 import { ContentfulBlogPostConnection } from '../../graphql-types';
 import Layout from '../components/layout';
 import Heading from '../components/heading';
-import Article from '../components/article';
+import Body from '../components/body';
+import Section from '../components/section';
+import SectionHeading from '../components/sectionHeading';
 import Tags from '../components/tags';
 import Time from '../components/time';
 import SEO from '../components/seo';
 import { css } from '@emotion/react';
-import { color, fontSize, layout } from '../styles/settings';
+import { color, layout } from '../styles/settings';
 
 type Blog = {
   data: {
@@ -19,39 +21,33 @@ type Blog = {
   };
 };
 
-const title = css`
-  font-size: ${fontSize.xxxLarge};
-
-  @media screen and (max-width: ${layout.threshold}px) {
-    font-size: ${fontSize.xLarge};
-  }
+const sectionHeading = css`
+  transition: opacity 200ms;
 `;
 
 const anchor = css`
+  display: block;
   color: ${color.font.primary};
 
-  &:hover {
-    opacity: 0.6;
+  &:hover .css-${sectionHeading.name} {
+    opacity: 0.5;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    color: ${color.font.secondary};
   }
 `;
 
-const section = css`
-  & + & {
-    margin-top: 60px;
-    padding-top: 60px;
-    border-top: solid 1px ${color.border.primary};
-  }
+const time = css`
+  margin-top: 15px;
 
   @media screen and (max-width: ${layout.threshold}px) {
-    & + & {
-      margin-top: 35px;
-      padding-top: 35px;
-    }
+    margin-top: 10px;
   }
 `;
 
 const tags = css`
-  margin-top: 10px;
+  margin-top: 5px;
 `;
 
 const Blog: React.FC<Blog> = ({ data, location }) => {
@@ -59,21 +55,23 @@ const Blog: React.FC<Blog> = ({ data, location }) => {
     <Layout>
       <SEO title="Blog" description="" pagePath={location.pathname} />
       <Heading label={'Blog'} />
-      <Article>
+      <Body>
         {data.allContentfulBlogPost.edges.map(({ node }) => (
-          <section key={node.id} css={section}>
-            <h2 css={title}>
-              <Link to={`/blog/post/${node.slug}`} css={anchor}>
-                {node.title}
-              </Link>
-            </h2>
-            <Time publishDate={node.publishDate} />
-            <div css={tags}>
-              <Tags category={node.category} />
-            </div>
-          </section>
+          <Section key={node.id}>
+            <Link to={`/blog/post/${node.slug}`} css={anchor}>
+              <div css={sectionHeading}>
+                <SectionHeading label={node.title} />
+              </div>
+              <div css={time}>
+                <Time publishDate={node.publishDate} />
+              </div>
+              <div css={tags}>
+                <Tags category={node.category} />
+              </div>
+            </Link>
+          </Section>
         ))}
-      </Article>
+      </Body>
     </Layout>
   );
 };

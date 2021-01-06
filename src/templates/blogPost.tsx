@@ -11,7 +11,7 @@ import useContentfulImage from '../hooks/useContentfulImage';
 import Img from 'gatsby-image';
 import Layout from '../components/layout';
 import Heading from '../components/heading';
-import Article from '../components/article';
+import Body from '../components/body';
 import Tags from '../components/tags';
 import Time from '../components/time';
 import SEO from '../components/seo';
@@ -63,7 +63,7 @@ const blogPostPage: React.FC<BlogPost> = ({ data, pageContext, location }) => {
         pagePath={location.pathname}
       />
       <Heading label={data.contentfulBlogPost.title} />
-      <Article>
+      <Body>
         <Time publishDate={data.contentfulBlogPost.publishDate} />
         <div>{renderRichText(data.contentfulBlogPost.content, options)}</div>
         <Tags category={data.contentfulBlogPost.category} />
@@ -83,7 +83,7 @@ const blogPostPage: React.FC<BlogPost> = ({ data, pageContext, location }) => {
             </div>
           )}
         </div>
-      </Article>
+      </Body>
     </Layout>
   );
 };

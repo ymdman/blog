@@ -10,8 +10,8 @@ const container = css`
   }
 `;
 
-const Article: React.FC = ({ children }) => {
+const Body: React.FC = ({ children }) => {
   return <div css={container}>{children}</div>;
 };
 
-export default Article;
+export default Body;

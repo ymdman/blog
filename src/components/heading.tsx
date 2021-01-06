@@ -9,7 +9,6 @@ type Label = {
 const heading = css`
   display: flex;
   justify-content: center;
-  align-items: center;
   font-size: ${fontSize.xxxxxLarge};
   font-weight: bold;
   word-break: break-all;

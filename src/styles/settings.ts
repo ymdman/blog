@@ -10,6 +10,7 @@ const color = {
   },
   border: {
     primary: '#e2e2e2',
+    secondary: '#333',
   },
 };
 

@@ -13,7 +13,7 @@ const tags = css`
 `;
 
 const tag = css`
-  padding: 2px 5px;
+  padding: 0 5px;
   border-radius: 3px;
   background-color: ${color.background.primary};
   color: ${color.font.primary};

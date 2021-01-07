@@ -7,6 +7,7 @@ const color = {
   background: {
     primary: '#ececec',
     secondary: '#151515',
+    tertiary: '#333',
   },
   border: {
     primary: '#e2e2e2',

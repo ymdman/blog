@@ -12,6 +12,7 @@ const heading = css`
   font-size: ${fontSize.xxxxxLarge};
   font-weight: bold;
   word-break: break-all;
+  line-height: 1.2;
 
   @media screen and (max-width: ${layout.threshold}px) {
     font-size: ${fontSize.xxxLarge};

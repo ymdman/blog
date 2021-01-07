@@ -13,13 +13,19 @@ const tags = css`
 `;
 
 const tag = css`
-  padding: 0 5px;
+  padding: 3px 5px 2px;
   border-radius: 3px;
   background-color: ${color.background.primary};
   color: ${color.font.primary};
+  line-height: 1;
 
   & + & {
     margin-left: 5px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    background-color: ${color.background.tertiary};
+    color: ${color.font.secondary};
   }
 `;
 

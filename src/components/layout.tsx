@@ -31,7 +31,11 @@ const container = css`
 
 const mainBasic = css`
   flex: 1;
-  margin-top: 60px;
+  margin-top: 80px;
+
+  @media screen and (max-width: ${layout.threshold}px) {
+    margin-top: 60px;
+  }
 `;
 
 const mainCentering = css`

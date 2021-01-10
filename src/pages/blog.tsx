@@ -16,9 +16,6 @@ type Blog = {
   data: {
     allContentfulBlogPost: ContentfulBlogPostConnection;
   };
-  location: {
-    pathname: string;
-  };
 };
 
 const sectionHeading = css`
@@ -50,10 +47,10 @@ const tags = css`
   margin-top: 5px;
 `;
 
-const Blog: React.FC<Blog> = ({ data, location }) => {
+const Blog: React.FC<Blog> = ({ data }) => {
   return (
     <Layout>
-      <SEO title="Blog" description="" pagePath={location.pathname} />
+      <SEO title="Blog" description="" pagePath={window.location.pathname} />
       <Heading label={'Blog'} />
       <Body>
         {data.allContentfulBlogPost.edges.map(({ node }) => (

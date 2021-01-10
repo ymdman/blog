@@ -26,9 +26,6 @@ type BlogPost = {
     contentfulBlogPost: ContentfulBlogPost & MarkdownRemark;
   };
   pageContext: SitePageContext;
-  location: {
-    pathname: string;
-  };
 };
 
 const article = css`
@@ -136,7 +133,11 @@ const blogPostPage: React.FC<BlogPost> = ({ data }) => {
 
   return (
     <Layout>
-      <SEO title={post.title!} description={''} pagePath={location.pathname} />
+      <SEO
+        title={post.title!}
+        description={''}
+        pagePath={window.location.pathname}
+      />
       <Heading label={post.title} />
       <Body>
         <Time publishDate={post.publishDate} />

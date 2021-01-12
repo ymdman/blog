@@ -6,6 +6,7 @@ import Heading from '../components/heading';
 import Body from '../components/body';
 import Section from '../components/section';
 import SectionHeading from '../components/sectionHeading';
+import Article from '../components/article';
 import SEO from '../components/seo';
 // import { css } from '@emotion/react';
 // import { layout } from '../styles/settings';
@@ -35,19 +36,15 @@ const About: React.FC<About> = ({ data }) => {
       <Body>
         <Section>
           <SectionHeading label={'This Site'} />
-          <div
-            dangerouslySetInnerHTML={{
-              __html: data.contentfulAbout.site?.childMarkdownRemark?.html,
-            }}
-          ></div>
+          <Article
+            html={data.contentfulAbout.site?.childMarkdownRemark?.html}
+          />
         </Section>
         <Section>
           <SectionHeading label={'Profile'} />
-          <div
-            dangerouslySetInnerHTML={{
-              __html: data.contentfulAbout.profile?.childMarkdownRemark?.html,
-            }}
-          ></div>
+          <Article
+            html={data.contentfulAbout.profile?.childMarkdownRemark?.html}
+          />
         </Section>
       </Body>
     </Layout>

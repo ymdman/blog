@@ -8,8 +8,8 @@ import Section from '../components/section';
 import SectionHeading from '../components/sectionHeading';
 import Article from '../components/article';
 import SEO from '../components/seo';
-// import { css } from '@emotion/react';
-// import { layout } from '../styles/settings';
+import { css } from '@emotion/react';
+import { layout } from '../styles/settings';
 
 type ChildMarkdownRemark = {
   childMarkdownRemark: {
@@ -28,6 +28,14 @@ type About = {
   };
 };
 
+const article = css`
+  margin-top: 15px;
+
+  @media screen and (max-width: ${layout.threshold}px) {
+    margin-top: 10px;
+  }
+`;
+
 const About: React.FC<About> = ({ data }) => {
   return (
     <Layout>
@@ -36,15 +44,19 @@ const About: React.FC<About> = ({ data }) => {
       <Body>
         <Section>
           <SectionHeading label={'This Site'} />
-          <Article
-            html={data.contentfulAbout.site?.childMarkdownRemark?.html}
-          />
+          <div css={article}>
+            <Article
+              html={data.contentfulAbout.site?.childMarkdownRemark?.html}
+            />
+          </div>
         </Section>
         <Section>
           <SectionHeading label={'Profile'} />
-          <Article
-            html={data.contentfulAbout.profile?.childMarkdownRemark?.html}
-          />
+          <div css={article}>
+            <Article
+              html={data.contentfulAbout.profile?.childMarkdownRemark?.html}
+            />
+          </div>
         </Section>
       </Body>
     </Layout>

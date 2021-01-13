@@ -10,7 +10,8 @@ import Article from '../components/article';
 import Tags from '../components/tags';
 import Time from '../components/time';
 import SEO from '../components/seo';
-import 'prismjs/themes/prism-tomorrow.css';
+import { css } from '@emotion/react';
+import { layout } from '../styles/settings';
 
 type MarkdownRemark = {
   content: {
@@ -27,6 +28,14 @@ type BlogPost = {
   pageContext: SitePageContext;
 };
 
+const article = css`
+  margin-top: 80px;
+
+  @media screen and (max-width: ${layout.threshold}px) {
+    margin-top: 45px;
+  }
+`;
+
 const blogPostPage: React.FC<BlogPost> = ({ data }) => {
   const post = data.contentfulBlogPost;
 
@@ -41,7 +50,9 @@ const blogPostPage: React.FC<BlogPost> = ({ data }) => {
       <Body>
         <Time publishDate={post.publishDate} />
         <Tags category={post.category} />
-        <Article html={post.content.childMarkdownRemark.html} />
+        <div css={article}>
+          <Article html={post.content.childMarkdownRemark.html} />
+        </div>
         {/* <div>
           {pageContext.previous && (
             <div>

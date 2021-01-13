@@ -1,25 +1,25 @@
 import React from 'react';
 import { css } from '@emotion/react';
 import { color, fontSize, layout } from '../styles/settings';
+import 'prismjs/themes/prism-tomorrow.css';
 
 type MarkdownRemark = {
   html: string;
 };
 
-const article = css`
-  margin-top: 80px;
-
-  & > p,
-  & > ul,
-  & > ol,
-  & > div {
+const container = css`
+  & > * + p,
+  & > * + ul,
+  & > * + ol,
+  & > * + div {
     margin-top: 15px;
   }
 
   & h2 {
-    padding-bottom: 7px;
+    padding-bottom: 10px;
     font-size: ${fontSize.xxxLarge};
     font-weight: bold;
+    line-height: 1.4;
     border-bottom: solid 1px ${color.border.primary};
   }
 
@@ -74,12 +74,10 @@ const article = css`
   }
 
   @media screen and (max-width: ${layout.threshold}px) {
-    margin-top: 45px;
-
-    & > p,
-    & > ul,
-    & > ol,
-    & > div {
+    & > * + p,
+    & > * + ul,
+    & > * + ol,
+    & > * + div {
       margin-top: 15px;
     }
 
@@ -112,7 +110,7 @@ const Article: React.FC<MarkdownRemark> = ({ html }) => {
       dangerouslySetInnerHTML={{
         __html: html,
       }}
-      css={article}
+      css={container}
     ></div>
   );
 };

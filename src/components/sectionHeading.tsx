@@ -7,9 +7,10 @@ type Label = {
 };
 
 const heading = css`
-  padding-bottom: 7px;
+  padding-bottom: 10px;
   font-size: ${fontSize.xxxLarge};
   font-weight: bold;
+  line-height: 1.4;
   border-bottom: solid 1px ${color.border.primary};
 
   @media (prefers-color-scheme: dark) {

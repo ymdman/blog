@@ -37,6 +37,7 @@ const layout = {
 };
 
 const zIndex = {
+  particlesBackground: -1,
   header: 1,
 };
 

@@ -53,22 +53,6 @@ const blogPostPage: React.FC<BlogPost> = ({ data }) => {
         <div css={article}>
           <Article html={post.content.childMarkdownRemark.html} />
         </div>
-        {/* <div>
-          {pageContext.previous && (
-            <div>
-              <Link to={`/blog/post/${pageContext.previous.slug}`}>
-                {pageContext.previous.title}
-              </Link>
-            </div>
-          )}
-          {pageContext.next && (
-            <div>
-              <Link to={`/blog/post/${pageContext.next.slug}`}>
-                {pageContext.next.title}
-              </Link>
-            </div>
-          )}
-        </div> */}
       </Body>
     </Layout>
   );

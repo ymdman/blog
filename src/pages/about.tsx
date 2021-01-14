@@ -36,7 +36,7 @@ const article = css`
   }
 `;
 
-const About: React.FC<About> = ({ data }) => {
+const AboutPage: React.FC<About> = ({ data }) => {
   return (
     <Layout>
       <SEO title="About" />
@@ -80,4 +80,4 @@ export const query = graphql`
   }
 `;
 
-export default About;
+export default AboutPage;

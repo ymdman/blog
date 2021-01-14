@@ -3,11 +3,15 @@ import Layout from '../components/layout';
 import SEO from '../components/seo';
 import ParticlesBackground from '../components/particlesBackground';
 import { css } from '@emotion/react';
-import { fontSize } from '../styles/settings';
+import { fontSize, layout } from '../styles/settings';
 
 const title = css`
   font-size: ${fontSize.xxxxxLarge};
   font-weight: bold;
+
+  @media screen and (max-width: ${layout.threshold}px) {
+    font-size: ${fontSize.xxxLarge};
+  }
 `;
 
 const IndexPage = () => {

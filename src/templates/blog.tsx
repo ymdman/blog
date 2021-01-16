@@ -75,7 +75,11 @@ const Blog: React.FC<Blog> = ({ data }) => {
 
 export const query = graphql`
   query {
-    allContentfulBlogPost(sort: { fields: publishDate, order: DESC }) {
+    allContentfulBlogPost(
+      limit: 10
+      skip: 0
+      sort: { fields: publishDate, order: DESC }
+    ) {
       edges {
         node {
           title

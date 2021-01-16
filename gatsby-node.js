@@ -42,4 +42,15 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       });
     }
   );
+
+  const blogVisibleMaxLength = 10;
+  const blogPostLength = blogResult.data.allContentfulBlogPost.edges.length;
+  const blogPageLength = Math.ceil(blogPostLength / blogVisibleMaxLength);
+
+  Array.from({ length: blogPageLength }).forEach((_, i) => {
+    createPage({
+      path: i === 0 ? `/blog/` : `/blog/${i + 1}/`,
+      component: path.resolve('./src/templates/blog.tsx'),
+    });
+  });
 };

@@ -53,14 +53,22 @@ const list = css`
   align-items: center;
   list-style: none;
 
-  li + li {
+  & > li + li {
     margin-left: 50px;
+  }
+
+  & > lI {
+    transition: opacity 200ms;
+  }
+
+  & > li:hover {
+    opacity: 0.5;
   }
 
   @media screen and (max-width: ${layout.threshold}px) {
     font-size: ${fontSize.small};
 
-    li + li {
+    & > li + li {
       margin-left: 20px;
     }
   }

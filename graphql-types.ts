@@ -5183,12 +5183,16 @@ export type SitePageContext = {
   id?: Maybe<Scalars['String']>;
   next?: Maybe<SitePageContextNext>;
   previous?: Maybe<SitePageContextPrevious>;
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
 };
 
 export type SitePageContextFilterInput = {
   id?: Maybe<StringQueryOperatorInput>;
   next?: Maybe<SitePageContextNextFilterInput>;
   previous?: Maybe<SitePageContextPreviousFilterInput>;
+  skip?: Maybe<IntQueryOperatorInput>;
+  limit?: Maybe<IntQueryOperatorInput>;
 };
 
 export type SitePageContextNext = {
@@ -5315,6 +5319,8 @@ export type SitePageFieldsEnum =
   | 'context___next___title'
   | 'context___previous___title'
   | 'context___previous___slug'
+  | 'context___skip'
+  | 'context___limit'
   | 'pluginCreator___id'
   | 'pluginCreator___parent___id'
   | 'pluginCreator___parent___parent___id'
@@ -5936,7 +5942,10 @@ export type Unnamed_4_QueryVariables = Exact<{ [key: string]: never; }>;
 
 export type Unnamed_4_Query = { contentfulAbout?: Maybe<{ profile?: Maybe<{ childMarkdownRemark?: Maybe<Pick<MarkdownRemark, 'html'>> }>, site?: Maybe<{ childMarkdownRemark?: Maybe<Pick<MarkdownRemark, 'html'>> }> }> };
 
-export type Unnamed_5_QueryVariables = Exact<{ [key: string]: never; }>;
+export type Unnamed_5_QueryVariables = Exact<{
+  skip: Scalars['Int'];
+  limit: Scalars['Int'];
+}>;
 
 
 export type Unnamed_5_Query = { allContentfulBlogPost: { edges: Array<{ node: (

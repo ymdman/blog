@@ -74,10 +74,10 @@ const Blog: React.FC<Blog> = ({ data }) => {
 };
 
 export const query = graphql`
-  query {
+  query($skip: Int!, $limit: Int!) {
     allContentfulBlogPost(
-      limit: 10
-      skip: 0
+      limit: $limit
+      skip: $skip
       sort: { fields: publishDate, order: DESC }
     ) {
       edges {

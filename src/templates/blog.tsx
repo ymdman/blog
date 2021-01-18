@@ -8,6 +8,8 @@ import Section from '../components/section';
 import SectionHeading from '../components/sectionHeading';
 import Tags from '../components/tags';
 import Time from '../components/time';
+import IconArrowLeft from '../components/icons/arrowLeft';
+import IconArrowRight from '../components/icons/arrowRight';
 import SEO from '../components/seo';
 import { css } from '@emotion/react';
 import { color, layout } from '../styles/settings';
@@ -47,6 +49,31 @@ const tags = css`
   margin-top: 5px;
 `;
 
+const pagination = css`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 80px;
+`;
+
+const paginationItem = css`
+  display: flex;
+  align-items: center;
+  color: ${color.font.primary};
+
+  @media (prefers-color-scheme: dark) {
+    color: ${color.font.secondary};
+  }
+`;
+
+const paginationIconLeft = css`
+  display: flex;
+  margin-right: 5px;
+`;
+const paginationIconRight = css`
+  display: flex;
+  margin-left: 5px;
+`;
+
 const Blog: React.FC<Blog> = ({ data }) => {
   return (
     <Layout>
@@ -68,6 +95,20 @@ const Blog: React.FC<Blog> = ({ data }) => {
             </Link>
           </Section>
         ))}
+        <div css={pagination}>
+          <Link to={'/'} css={paginationItem}>
+            <div css={paginationIconLeft}>
+              <IconArrowLeft width={20} height={20} />
+            </div>
+            <span>Prev</span>
+          </Link>
+          <Link to={'/'} css={paginationItem}>
+            <span>Next</span>
+            <div css={paginationIconRight}>
+              <IconArrowRight width={20} height={20} />
+            </div>
+          </Link>
+        </div>
       </Body>
     </Layout>
   );

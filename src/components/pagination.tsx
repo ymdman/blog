@@ -48,7 +48,7 @@ const Pagination: React.FC<Pagination> = ({
   const disabledStyle = 'opacity: 0.5; cursor: default; pointer-events: none;';
   const firstItemDisabled = isFirst && disabledStyle;
   const lastItemDisabled = isLast && disabledStyle;
-  const prevPage = currentPage === 2 ? '/blog/' : `/blog/${currentPage! - 1}`;
+  const prevPage = currentPage === 2 ? '/blog/' : `/blog/${currentPage - 1}`;
 
   return (
     <>
@@ -61,7 +61,7 @@ const Pagination: React.FC<Pagination> = ({
             <span>Prev</span>
           </Link>
           <Link
-            to={isLast ? '/' : `/blog/${currentPage! + 1}`}
+            to={isLast ? '/' : `/blog/${currentPage + 1}`}
             css={[item, lastItemDisabled]}
           >
             <span>Next</span>

@@ -5185,6 +5185,10 @@ export type SitePageContext = {
   previous?: Maybe<SitePageContextPrevious>;
   skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
+  length?: Maybe<Scalars['Int']>;
+  currentPage?: Maybe<Scalars['Int']>;
+  isFirst?: Maybe<Scalars['Boolean']>;
+  isLast?: Maybe<Scalars['Boolean']>;
 };
 
 export type SitePageContextFilterInput = {
@@ -5193,6 +5197,10 @@ export type SitePageContextFilterInput = {
   previous?: Maybe<SitePageContextPreviousFilterInput>;
   skip?: Maybe<IntQueryOperatorInput>;
   limit?: Maybe<IntQueryOperatorInput>;
+  length?: Maybe<IntQueryOperatorInput>;
+  currentPage?: Maybe<IntQueryOperatorInput>;
+  isFirst?: Maybe<BooleanQueryOperatorInput>;
+  isLast?: Maybe<BooleanQueryOperatorInput>;
 };
 
 export type SitePageContextNext = {
@@ -5321,6 +5329,10 @@ export type SitePageFieldsEnum =
   | 'context___previous___slug'
   | 'context___skip'
   | 'context___limit'
+  | 'context___length'
+  | 'context___currentPage'
+  | 'context___isFirst'
+  | 'context___isLast'
   | 'pluginCreator___id'
   | 'pluginCreator___parent___id'
   | 'pluginCreator___parent___parent___id'

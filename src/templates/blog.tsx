@@ -1,6 +1,9 @@
 import React from 'react';
 import { graphql, Link } from 'gatsby';
-import { ContentfulBlogPostConnection } from '../../graphql-types';
+import {
+  ContentfulBlogPostConnection,
+  SitePageContext,
+} from '../../graphql-types';
 import Layout from '../components/layout';
 import Heading from '../components/heading';
 import Body from '../components/body';
@@ -8,8 +11,7 @@ import Section from '../components/section';
 import SectionHeading from '../components/sectionHeading';
 import Tags from '../components/tags';
 import Time from '../components/time';
-import IconArrowLeft from '../components/icons/arrowLeft';
-import IconArrowRight from '../components/icons/arrowRight';
+import Pagination from '../components/pagination';
 import SEO from '../components/seo';
 import { css } from '@emotion/react';
 import { color, layout } from '../styles/settings';
@@ -18,6 +20,7 @@ type Blog = {
   data: {
     allContentfulBlogPost: ContentfulBlogPostConnection;
   };
+  pageContext: SitePageContext;
 };
 
 const sectionHeading = css`
@@ -50,31 +53,10 @@ const tags = css`
 `;
 
 const pagination = css`
-  display: flex;
-  justify-content: space-between;
   margin-top: 80px;
 `;
 
-const paginationItem = css`
-  display: flex;
-  align-items: center;
-  color: ${color.font.primary};
-
-  @media (prefers-color-scheme: dark) {
-    color: ${color.font.secondary};
-  }
-`;
-
-const paginationIconLeft = css`
-  display: flex;
-  margin-right: 5px;
-`;
-const paginationIconRight = css`
-  display: flex;
-  margin-left: 5px;
-`;
-
-const Blog: React.FC<Blog> = ({ data }) => {
+const Blog: React.FC<Blog> = ({ data, pageContext }) => {
   return (
     <Layout>
       <SEO title="Blog" description="" pagePath={window.location.pathname} />
@@ -96,18 +78,13 @@ const Blog: React.FC<Blog> = ({ data }) => {
           </Section>
         ))}
         <div css={pagination}>
-          <Link to={'/'} css={paginationItem}>
-            <div css={paginationIconLeft}>
-              <IconArrowLeft width={20} height={20} />
-            </div>
-            <span>Prev</span>
-          </Link>
-          <Link to={'/'} css={paginationItem}>
-            <span>Next</span>
-            <div css={paginationIconRight}>
-              <IconArrowRight width={20} height={20} />
-            </div>
-          </Link>
+          <Pagination
+            currentPage={pageContext.currentPage!}
+            length={pageContext.length!}
+            limit={pageContext.limit!}
+            isFirst={pageContext.isFirst!}
+            isLast={pageContext.isLast!}
+          />
         </div>
       </Body>
     </Layout>

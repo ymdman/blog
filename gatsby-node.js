@@ -53,6 +53,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       context: {
         skip: blogVisibleMaxLength * i,
         limit: blogVisibleMaxLength,
+        length: blogPostLength,
+        currentPage: i + 1,
+        isFirst: i + 1 === 1,
+        isLast: i + 1 === blogPageLength,
       },
     });
   });

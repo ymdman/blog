@@ -24,7 +24,7 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `static/favicon.png`, // This path is relative to the root of the site.
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
@@ -37,9 +37,17 @@ module.exports = {
           {
             resolve: `gatsby-remark-prismjs`,
             options: {
-              classPrefix: 'language-',
+              classPrefix: `language-`,
               inlineCodeMarker: null,
               aliases: {},
+            },
+          },
+          {
+            resolve: `gatsby-remark-images-contentful`,
+            options: {
+              linkImagesToOriginal: false,
+              withWebp: true,
+              backgroundColor: `transparent`,
             },
           },
         ],
@@ -49,11 +57,11 @@ module.exports = {
     `gatsby-plugin-graphql-codegen`,
     `gatsby-plugin-emotion`,
     {
-      resolve: 'gatsby-plugin-eslint',
+      resolve: `gatsby-plugin-eslint`,
       options: {
         test: /\.ts$|\.tsx$/,
         exclude: /(node_modules|.cache|public)/,
-        stages: ['develop'],
+        stages: [`develop`],
         options: {
           emitWarning: true,
           failOnError: false,

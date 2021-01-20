@@ -28,6 +28,12 @@ export type Scalars = {
 
 
 
+export type AvifOptions = {
+  quality?: Maybe<Scalars['Int']>;
+  lossless?: Maybe<Scalars['Boolean']>;
+  speed?: Maybe<Scalars['Int']>;
+};
+
 export type BlurredOptions = {
   /** Width of the generated low-res preview. Default is 20px */
   width?: Maybe<Scalars['Int']>;
@@ -3464,11 +3470,12 @@ export type ImageFormat =
   | 'AUTO'
   | 'JPG'
   | 'PNG'
-  | 'WEBP';
+  | 'WEBP'
+  | 'AVIF';
 
 export type ImageLayout = 
   | 'FIXED'
-  | 'FLUID'
+  | 'FULL_WIDTH'
   | 'CONSTRAINED';
 
 export type ImagePlaceholder = 
@@ -3608,20 +3615,21 @@ export type ImageSharpSizesArgs = {
 
 export type ImageSharpGatsbyImageDataArgs = {
   layout?: Maybe<ImageLayout>;
-  maxWidth?: Maybe<Scalars['Int']>;
-  maxHeight?: Maybe<Scalars['Int']>;
   width?: Maybe<Scalars['Int']>;
   height?: Maybe<Scalars['Int']>;
+  aspectRatio?: Maybe<Scalars['Float']>;
   placeholder?: Maybe<ImagePlaceholder>;
   blurredOptions?: Maybe<BlurredOptions>;
   tracedSVGOptions?: Maybe<Potrace>;
   formats?: Maybe<Array<Maybe<ImageFormat>>>;
   outputPixelDensities?: Maybe<Array<Maybe<Scalars['Float']>>>;
+  breakpoints?: Maybe<Array<Maybe<Scalars['Int']>>>;
   sizes?: Maybe<Scalars['String']>;
   quality?: Maybe<Scalars['Int']>;
   jpgOptions?: Maybe<JpgOptions>;
   pngOptions?: Maybe<PngOptions>;
   webpOptions?: Maybe<WebPOptions>;
+  avifOptions?: Maybe<AvifOptions>;
   transformOptions?: Maybe<TransformOptions>;
   background?: Maybe<Scalars['String']>;
 };
@@ -5399,6 +5407,9 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___include_favicon'
   | 'pluginCreator___pluginOptions___cacheDigest'
   | 'pluginCreator___pluginOptions___classPrefix'
+  | 'pluginCreator___pluginOptions___linkImagesToOriginal'
+  | 'pluginCreator___pluginOptions___withWebp'
+  | 'pluginCreator___pluginOptions___backgroundColor'
   | 'pluginCreator___pluginOptions___isTSX'
   | 'pluginCreator___pluginOptions___jsxPragma'
   | 'pluginCreator___pluginOptions___allExtensions'
@@ -5611,6 +5622,9 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___plugins___name'
   | 'pluginOptions___plugins___version'
   | 'pluginOptions___plugins___pluginOptions___classPrefix'
+  | 'pluginOptions___plugins___pluginOptions___linkImagesToOriginal'
+  | 'pluginOptions___plugins___pluginOptions___withWebp'
+  | 'pluginOptions___plugins___pluginOptions___backgroundColor'
   | 'pluginOptions___plugins___pluginFilepath'
   | 'pluginOptions___name'
   | 'pluginOptions___path'
@@ -5631,6 +5645,9 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___include_favicon'
   | 'pluginOptions___cacheDigest'
   | 'pluginOptions___classPrefix'
+  | 'pluginOptions___linkImagesToOriginal'
+  | 'pluginOptions___withWebp'
+  | 'pluginOptions___backgroundColor'
   | 'pluginOptions___isTSX'
   | 'pluginOptions___jsxPragma'
   | 'pluginOptions___allExtensions'
@@ -5783,6 +5800,9 @@ export type SitePluginPluginOptions = {
   include_favicon?: Maybe<Scalars['Boolean']>;
   cacheDigest?: Maybe<Scalars['String']>;
   classPrefix?: Maybe<Scalars['String']>;
+  linkImagesToOriginal?: Maybe<Scalars['Boolean']>;
+  withWebp?: Maybe<Scalars['Boolean']>;
+  backgroundColor?: Maybe<Scalars['String']>;
   isTSX?: Maybe<Scalars['Boolean']>;
   jsxPragma?: Maybe<Scalars['String']>;
   allExtensions?: Maybe<Scalars['Boolean']>;
@@ -5825,6 +5845,9 @@ export type SitePluginPluginOptionsFilterInput = {
   include_favicon?: Maybe<BooleanQueryOperatorInput>;
   cacheDigest?: Maybe<StringQueryOperatorInput>;
   classPrefix?: Maybe<StringQueryOperatorInput>;
+  linkImagesToOriginal?: Maybe<BooleanQueryOperatorInput>;
+  withWebp?: Maybe<BooleanQueryOperatorInput>;
+  backgroundColor?: Maybe<StringQueryOperatorInput>;
   isTSX?: Maybe<BooleanQueryOperatorInput>;
   jsxPragma?: Maybe<StringQueryOperatorInput>;
   allExtensions?: Maybe<BooleanQueryOperatorInput>;
@@ -5880,10 +5903,16 @@ export type SitePluginPluginOptionsPluginsFilterListInput = {
 
 export type SitePluginPluginOptionsPluginsPluginOptions = {
   classPrefix?: Maybe<Scalars['String']>;
+  linkImagesToOriginal?: Maybe<Scalars['Boolean']>;
+  withWebp?: Maybe<Scalars['Boolean']>;
+  backgroundColor?: Maybe<Scalars['String']>;
 };
 
 export type SitePluginPluginOptionsPluginsPluginOptionsFilterInput = {
   classPrefix?: Maybe<StringQueryOperatorInput>;
+  linkImagesToOriginal?: Maybe<BooleanQueryOperatorInput>;
+  withWebp?: Maybe<BooleanQueryOperatorInput>;
+  backgroundColor?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SitePluginSortInput = {
@@ -5952,7 +5981,7 @@ export type Unnamed_3_Query = { allContentfulAsset: { nodes: Array<{ file?: Mayb
 export type Unnamed_4_QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type Unnamed_4_Query = { contentfulAbout?: Maybe<{ profile?: Maybe<{ childMarkdownRemark?: Maybe<Pick<MarkdownRemark, 'html'>> }>, site?: Maybe<{ childMarkdownRemark?: Maybe<Pick<MarkdownRemark, 'html'>> }> }> };
+export type Unnamed_4_Query = { contentfulAbout?: Maybe<{ profile?: Maybe<{ childMarkdownRemark?: Maybe<Pick<MarkdownRemark, 'html'>> }>, site?: Maybe<{ childMarkdownRemark?: Maybe<Pick<MarkdownRemark, 'html'>> }> }>, file?: Maybe<{ childImageSharp?: Maybe<{ fluid?: Maybe<GatsbyImageSharpFluid_WithWebpFragment> }> }> };
 
 export type Unnamed_5_QueryVariables = Exact<{
   skip: Scalars['Int'];

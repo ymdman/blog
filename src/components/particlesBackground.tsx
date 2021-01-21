@@ -13,7 +13,16 @@ const options = {
       },
     },
     color: {
-      value: ['#f30e05', '#f5cb06', '#f46706', '#2058c8'],
+      value: [
+        '#f30e05',
+        '#fbf503',
+        '#f46706',
+        '#2058c8',
+        '#52e506',
+        '#2c0f3c',
+        '#0a603f',
+        '#cab152',
+      ],
     },
     shape: {
       type: 'circle',

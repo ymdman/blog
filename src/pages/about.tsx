@@ -1,15 +1,18 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import { ContentfulAbout } from '../../graphql-types';
+import { ContentfulAbout, ImageSharpFluid } from '../../graphql-types';
+import Img, { FluidObject } from 'gatsby-image';
+import SEO from '../components/seo';
 import Layout from '../components/layout';
 import Heading from '../components/heading';
 import Body from '../components/body';
 import Section from '../components/section';
 import SectionHeading from '../components/sectionHeading';
 import Article from '../components/article';
-import SEO from '../components/seo';
+import IconGitHub from '../components/icons/github';
+import IconTwitter from '../components/icons/twitter';
 import { css } from '@emotion/react';
-import { layout } from '../styles/settings';
+import { color, layout } from '../styles/settings';
 
 type ChildMarkdownRemark = {
   childMarkdownRemark: {
@@ -25,6 +28,11 @@ type MarkdownRemark = {
 type About = {
   data: {
     contentfulAbout: ContentfulAbout & MarkdownRemark;
+    file: {
+      childImageSharp: {
+        fluid: ImageSharpFluid & FluidObject;
+      };
+    };
   };
 };
 
@@ -33,6 +41,40 @@ const article = css`
 
   @media screen and (max-width: ${layout.threshold}px) {
     margin-top: 10px;
+  }
+`;
+
+const profile = css`
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+`;
+
+const avatar = css`
+  flex-basis: 120px;
+  flex-shrink: 0;
+  overflow: hidden;
+  border: solid 1px ${color.border.primary};
+  border-radius: 50%;
+
+  @media (prefers-color-scheme: dark) {
+    border-color: ${color.border.secondary};
+  }
+`;
+
+const description = css`
+  margin-left: 30px;
+`;
+
+const sns = css`
+  margin-top: 15px;
+`;
+
+const anchor = css`
+  color: inherit;
+
+  & + & {
+    margin-left: 10px;
   }
 `;
 
@@ -52,10 +94,33 @@ const AboutPage: React.FC<About> = ({ data }) => {
         </Section>
         <Section>
           <SectionHeading label={'Profile'} />
-          <div css={article}>
-            <Article
-              html={data.contentfulAbout.profile?.childMarkdownRemark?.html}
-            />
+          <div css={profile}>
+            <div css={avatar}>
+              <Img fluid={data.file.childImageSharp.fluid} />
+            </div>
+            <div css={description}>
+              <Article
+                html={data.contentfulAbout.profile?.childMarkdownRemark?.html}
+              />
+              <div css={sns}>
+                <a
+                  href="https://github.com/ymdman"
+                  rel="noreferrer"
+                  target="_blank"
+                  css={anchor}
+                >
+                  <IconGitHub width={22} height={22} />
+                </a>
+                <a
+                  href="https://twitter.com/yama80059601"
+                  rel="noreferrer"
+                  target="_blank"
+                  css={anchor}
+                >
+                  <IconTwitter width={22} height={22} />
+                </a>
+              </div>
+            </div>
           </div>
         </Section>
       </Body>
@@ -74,6 +139,13 @@ export const query = graphql`
       site {
         childMarkdownRemark {
           html
+        }
+      }
+    }
+    file(relativePath: { eq: "avatar.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 300) {
+          ...GatsbyImageSharpFluid_withWebp
         }
       }
     }

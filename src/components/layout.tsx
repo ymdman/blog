@@ -29,7 +29,7 @@ const container = css`
   }
 `;
 
-const mainBasic = css`
+const main = css`
   flex: 1;
   margin-top: 80px;
 
@@ -38,16 +38,7 @@ const mainBasic = css`
   }
 `;
 
-const mainCentering = css`
-  display: flex;
-  flex: 1;
-  justify-content: center;
-  align-items: center;
-`;
-
 const Layout: React.FC = ({ children }) => {
-  const isTopPage = window.location.pathname === '/';
-
   return (
     <>
       <Global
@@ -58,7 +49,7 @@ const Layout: React.FC = ({ children }) => {
       />
       <div css={container}>
         <Header />
-        <main css={isTopPage ? mainCentering : mainBasic}>{children}</main>
+        <main css={main}>{children}</main>
         <Footer />
       </div>
     </>

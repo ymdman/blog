@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `YamaMemo`,
+    title: `ymdman.com`,
     description: `ymdmanのBlogです`,
     author: `ymdman`,
   },
@@ -18,18 +18,15 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `ymdman.com`,
+        short_name: `ymdman.com`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#fff`,
+        theme_color: `#f30e05`,
         display: `minimal-ui`,
-        icon: `static/favicon.png`, // This path is relative to the root of the site.
+        icon: `static/favicon.png`,
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
     {
       resolve: `gatsby-transformer-remark`,
       options: {

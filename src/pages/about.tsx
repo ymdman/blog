@@ -48,11 +48,16 @@ const profile = css`
   display: flex;
   align-items: center;
   margin-top: 15px;
+
+  @media screen and (max-width: ${layout.threshold}px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 `;
 
 const avatar = css`
-  flex-basis: 120px;
   flex-shrink: 0;
+  width: 120px;
   overflow: hidden;
   border: solid 1px ${color.border.primary};
   border-radius: 50%;
@@ -64,14 +69,23 @@ const avatar = css`
 
 const description = css`
   margin-left: 30px;
+
+  @media screen and (max-width: ${layout.threshold}px) {
+    margin-top: 20px;
+    margin-left: 0;
+  }
 `;
 
 const sns = css`
-  margin-top: 15px;
+  margin-top: 20px;
 `;
 
 const anchor = css`
   color: inherit;
+
+  &:hover {
+    opacity: 0.5;
+  }
 
   & + & {
     margin-left: 10px;

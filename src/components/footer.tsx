@@ -19,7 +19,7 @@ const Footer = () => {
   return (
     <footer css={container}>
       <small css={copyright}>
-        © {new Date().getFullYear()} ymdmanMemo All Right Reserved.
+        © {new Date().getFullYear()} ymdman.com All Right Reserved.
       </small>
     </footer>
   );

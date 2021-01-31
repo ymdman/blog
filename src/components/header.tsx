@@ -97,7 +97,7 @@ const LogoSecondary = () => {
 const Title = () => {
   return (
     <Link to="/" css={anchor}>
-      ymdmanMemo
+      ymdman.com
     </Link>
   );
 };

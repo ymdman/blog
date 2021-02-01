@@ -156,7 +156,7 @@ export const query = graphql`
         }
       }
     }
-    file(relativePath: { eq: "avatar.png" }) {
+    file(relativePath: { eq: "avatar.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 300) {
           ...GatsbyImageSharpFluid_withWebp

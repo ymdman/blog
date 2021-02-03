@@ -57,9 +57,12 @@ const pagination = css`
 `;
 
 const Blog: React.FC<Blog> = ({ data, pageContext }) => {
+  const pathName =
+    typeof window !== 'undefined' ? window.location.pathname : '';
+
   return (
     <Layout>
-      <SEO title="Blog" description="" pagePath={window.location.pathname} />
+      <SEO title="Blog" description="" pagePath={pathName} />
       <Heading label={'Blog'} />
       <Body>
         {data.allContentfulBlogPost.edges.map(({ node }) => (

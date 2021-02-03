@@ -104,7 +104,8 @@ const Title = () => {
 
 const Header = () => {
   const isDesktop = useDeviceChecked() === 'desktop';
-  const isTopPage = window.location.pathname === '/';
+  const isTopPage =
+    typeof window !== 'undefined' && window.location.pathname === '/';
 
   return (
     <header css={container}>

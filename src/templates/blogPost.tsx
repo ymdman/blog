@@ -38,14 +38,12 @@ const article = css`
 
 const blogPostPage: React.FC<BlogPost> = ({ data }) => {
   const post = data.contentfulBlogPost;
+  const pathName =
+    typeof window !== 'undefined' ? window.location.pathname : '';
 
   return (
     <Layout>
-      <SEO
-        title={post.title!}
-        description={''}
-        pagePath={window.location.pathname}
-      />
+      <SEO title={post.title!} description={''} pagePath={pathName} />
       <Heading label={post.title} />
       <Body>
         <Time publishDate={post.publishDate} />

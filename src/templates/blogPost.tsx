@@ -1,8 +1,6 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import { ContentfulBlogPost, SitePageContext } from '../../graphql-types';
-// import useContentfulImage from '../hooks/useContentfulImage';
-// import Img from 'gatsby-image';
 import Layout from '../components/layout';
 import Heading from '../components/heading';
 import Body from '../components/body';

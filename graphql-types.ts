@@ -1616,6 +1616,11 @@ export type ContentfulBlogPostFieldsEnum =
   | 'category___node_locale'
   | 'category___name'
   | 'category___slug'
+  | 'category___spaceId'
+  | 'category___createdAt'
+  | 'category___updatedAt'
+  | 'category___sys___type'
+  | 'category___sys___revision'
   | 'category___blogpost'
   | 'category___blogpost___contentful_id'
   | 'category___blogpost___id'
@@ -1629,10 +1634,10 @@ export type ContentfulBlogPostFieldsEnum =
   | 'category___blogpost___category___node_locale'
   | 'category___blogpost___category___name'
   | 'category___blogpost___category___slug'
-  | 'category___blogpost___category___blogpost'
   | 'category___blogpost___category___spaceId'
   | 'category___blogpost___category___createdAt'
   | 'category___blogpost___category___updatedAt'
+  | 'category___blogpost___category___blogpost'
   | 'category___blogpost___category___children'
   | 'category___blogpost___content___id'
   | 'category___blogpost___content___children'
@@ -1658,11 +1663,6 @@ export type ContentfulBlogPostFieldsEnum =
   | 'category___blogpost___childContentfulBlogPostContentTextNode___id'
   | 'category___blogpost___childContentfulBlogPostContentTextNode___children'
   | 'category___blogpost___childContentfulBlogPostContentTextNode___content'
-  | 'category___spaceId'
-  | 'category___createdAt'
-  | 'category___updatedAt'
-  | 'category___sys___type'
-  | 'category___sys___revision'
   | 'category___parent___id'
   | 'category___parent___parent___id'
   | 'category___parent___parent___children'
@@ -2007,11 +2007,11 @@ export type ContentfulCategory = ContentfulReference & ContentfulEntry & Node & 
   node_locale: Scalars['String'];
   name?: Maybe<Scalars['String']>;
   slug?: Maybe<Scalars['String']>;
-  blogpost?: Maybe<Array<Maybe<ContentfulBlogPost>>>;
   spaceId?: Maybe<Scalars['String']>;
   createdAt?: Maybe<Scalars['Date']>;
   updatedAt?: Maybe<Scalars['Date']>;
   sys?: Maybe<ContentfulCategorySys>;
+  blogpost?: Maybe<Array<Maybe<ContentfulBlogPost>>>;
   parent?: Maybe<Node>;
   children: Array<Node>;
   internal: Internal;
@@ -2066,6 +2066,14 @@ export type ContentfulCategoryFieldsEnum =
   | 'node_locale'
   | 'name'
   | 'slug'
+  | 'spaceId'
+  | 'createdAt'
+  | 'updatedAt'
+  | 'sys___type'
+  | 'sys___revision'
+  | 'sys___contentType___sys___type'
+  | 'sys___contentType___sys___linkType'
+  | 'sys___contentType___sys___id'
   | 'blogpost'
   | 'blogpost___contentful_id'
   | 'blogpost___id'
@@ -2079,6 +2087,11 @@ export type ContentfulCategoryFieldsEnum =
   | 'blogpost___category___node_locale'
   | 'blogpost___category___name'
   | 'blogpost___category___slug'
+  | 'blogpost___category___spaceId'
+  | 'blogpost___category___createdAt'
+  | 'blogpost___category___updatedAt'
+  | 'blogpost___category___sys___type'
+  | 'blogpost___category___sys___revision'
   | 'blogpost___category___blogpost'
   | 'blogpost___category___blogpost___contentful_id'
   | 'blogpost___category___blogpost___id'
@@ -2091,11 +2104,6 @@ export type ContentfulCategoryFieldsEnum =
   | 'blogpost___category___blogpost___createdAt'
   | 'blogpost___category___blogpost___updatedAt'
   | 'blogpost___category___blogpost___children'
-  | 'blogpost___category___spaceId'
-  | 'blogpost___category___createdAt'
-  | 'blogpost___category___updatedAt'
-  | 'blogpost___category___sys___type'
-  | 'blogpost___category___sys___revision'
   | 'blogpost___category___parent___id'
   | 'blogpost___category___parent___children'
   | 'blogpost___category___children'
@@ -2203,14 +2211,6 @@ export type ContentfulCategoryFieldsEnum =
   | 'blogpost___childContentfulBlogPostContentTextNode___childMarkdownRemark___timeToRead'
   | 'blogpost___childContentfulBlogPostContentTextNode___childMarkdownRemark___tableOfContents'
   | 'blogpost___childContentfulBlogPostContentTextNode___childMarkdownRemark___children'
-  | 'spaceId'
-  | 'createdAt'
-  | 'updatedAt'
-  | 'sys___type'
-  | 'sys___revision'
-  | 'sys___contentType___sys___type'
-  | 'sys___contentType___sys___linkType'
-  | 'sys___contentType___sys___id'
   | 'parent___id'
   | 'parent___parent___id'
   | 'parent___parent___parent___id'
@@ -2303,11 +2303,11 @@ export type ContentfulCategoryFilterInput = {
   node_locale?: Maybe<StringQueryOperatorInput>;
   name?: Maybe<StringQueryOperatorInput>;
   slug?: Maybe<StringQueryOperatorInput>;
-  blogpost?: Maybe<ContentfulBlogPostFilterListInput>;
   spaceId?: Maybe<StringQueryOperatorInput>;
   createdAt?: Maybe<DateQueryOperatorInput>;
   updatedAt?: Maybe<DateQueryOperatorInput>;
   sys?: Maybe<ContentfulCategorySysFilterInput>;
+  blogpost?: Maybe<ContentfulBlogPostFilterListInput>;
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
@@ -4374,12 +4374,12 @@ export type Query = {
   allContentfulCategory: ContentfulCategoryConnection;
   contentfulAbout?: Maybe<ContentfulAbout>;
   allContentfulAbout: ContentfulAboutConnection;
+  contentfulBlogPostContentTextNode?: Maybe<ContentfulBlogPostContentTextNode>;
+  allContentfulBlogPostContentTextNode: ContentfulBlogPostContentTextNodeConnection;
   contentfulAboutProfileTextNode?: Maybe<ContentfulAboutProfileTextNode>;
   allContentfulAboutProfileTextNode: ContentfulAboutProfileTextNodeConnection;
   contentfulAboutSiteTextNode?: Maybe<ContentfulAboutSiteTextNode>;
   allContentfulAboutSiteTextNode: ContentfulAboutSiteTextNodeConnection;
-  contentfulBlogPostContentTextNode?: Maybe<ContentfulBlogPostContentTextNode>;
-  allContentfulBlogPostContentTextNode: ContentfulBlogPostContentTextNodeConnection;
   contentfulContentType?: Maybe<ContentfulContentType>;
   allContentfulContentType: ContentfulContentTypeConnection;
   siteBuildMetadata?: Maybe<SiteBuildMetadata>;
@@ -4507,6 +4507,8 @@ export type QueryAllDirectoryArgs = {
 export type QuerySiteArgs = {
   buildTime?: Maybe<DateQueryOperatorInput>;
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
+  port?: Maybe<IntQueryOperatorInput>;
+  host?: Maybe<StringQueryOperatorInput>;
   polyfill?: Maybe<BooleanQueryOperatorInput>;
   pathPrefix?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
@@ -4663,11 +4665,11 @@ export type QueryContentfulCategoryArgs = {
   node_locale?: Maybe<StringQueryOperatorInput>;
   name?: Maybe<StringQueryOperatorInput>;
   slug?: Maybe<StringQueryOperatorInput>;
-  blogpost?: Maybe<ContentfulBlogPostFilterListInput>;
   spaceId?: Maybe<StringQueryOperatorInput>;
   createdAt?: Maybe<DateQueryOperatorInput>;
   updatedAt?: Maybe<DateQueryOperatorInput>;
   sys?: Maybe<ContentfulCategorySysFilterInput>;
+  blogpost?: Maybe<ContentfulBlogPostFilterListInput>;
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
@@ -4709,6 +4711,25 @@ export type QueryAllContentfulAboutArgs = {
 };
 
 
+export type QueryContentfulBlogPostContentTextNodeArgs = {
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+  content?: Maybe<StringQueryOperatorInput>;
+  sys?: Maybe<ContentfulBlogPostContentTextNodeSysFilterInput>;
+  childMarkdownRemark?: Maybe<MarkdownRemarkFilterInput>;
+};
+
+
+export type QueryAllContentfulBlogPostContentTextNodeArgs = {
+  filter?: Maybe<ContentfulBlogPostContentTextNodeFilterInput>;
+  sort?: Maybe<ContentfulBlogPostContentTextNodeSortInput>;
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+};
+
+
 export type QueryContentfulAboutProfileTextNodeArgs = {
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
@@ -4742,25 +4763,6 @@ export type QueryContentfulAboutSiteTextNodeArgs = {
 export type QueryAllContentfulAboutSiteTextNodeArgs = {
   filter?: Maybe<ContentfulAboutSiteTextNodeFilterInput>;
   sort?: Maybe<ContentfulAboutSiteTextNodeSortInput>;
-  skip?: Maybe<Scalars['Int']>;
-  limit?: Maybe<Scalars['Int']>;
-};
-
-
-export type QueryContentfulBlogPostContentTextNodeArgs = {
-  id?: Maybe<StringQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  children?: Maybe<NodeFilterListInput>;
-  internal?: Maybe<InternalFilterInput>;
-  content?: Maybe<StringQueryOperatorInput>;
-  sys?: Maybe<ContentfulBlogPostContentTextNodeSysFilterInput>;
-  childMarkdownRemark?: Maybe<MarkdownRemarkFilterInput>;
-};
-
-
-export type QueryAllContentfulBlogPostContentTextNodeArgs = {
-  filter?: Maybe<ContentfulBlogPostContentTextNodeFilterInput>;
-  sort?: Maybe<ContentfulBlogPostContentTextNodeSortInput>;
   skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
 };
@@ -4830,6 +4832,8 @@ export type QueryAllSitePluginArgs = {
 export type Site = Node & {
   buildTime?: Maybe<Scalars['Date']>;
   siteMetadata?: Maybe<SiteSiteMetadata>;
+  port?: Maybe<Scalars['Int']>;
+  host?: Maybe<Scalars['String']>;
   polyfill?: Maybe<Scalars['Boolean']>;
   pathPrefix?: Maybe<Scalars['String']>;
   id: Scalars['ID'];
@@ -5032,6 +5036,8 @@ export type SiteFieldsEnum =
   | 'siteMetadata___title'
   | 'siteMetadata___description'
   | 'siteMetadata___author'
+  | 'port'
+  | 'host'
   | 'polyfill'
   | 'pathPrefix'
   | 'id'
@@ -5124,6 +5130,8 @@ export type SiteFieldsEnum =
 export type SiteFilterInput = {
   buildTime?: Maybe<DateQueryOperatorInput>;
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
+  port?: Maybe<IntQueryOperatorInput>;
+  host?: Maybe<StringQueryOperatorInput>;
   polyfill?: Maybe<BooleanQueryOperatorInput>;
   pathPrefix?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
@@ -5371,6 +5379,7 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___include_favicon'
   | 'pluginCreator___pluginOptions___cacheDigest'
   | 'pluginCreator___pluginOptions___classPrefix'
+  | 'pluginCreator___pluginOptions___maxWidth'
   | 'pluginCreator___pluginOptions___linkImagesToOriginal'
   | 'pluginCreator___pluginOptions___withWebp'
   | 'pluginCreator___pluginOptions___backgroundColor'
@@ -5586,6 +5595,7 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___plugins___name'
   | 'pluginOptions___plugins___version'
   | 'pluginOptions___plugins___pluginOptions___classPrefix'
+  | 'pluginOptions___plugins___pluginOptions___maxWidth'
   | 'pluginOptions___plugins___pluginOptions___linkImagesToOriginal'
   | 'pluginOptions___plugins___pluginOptions___withWebp'
   | 'pluginOptions___plugins___pluginOptions___backgroundColor'
@@ -5609,6 +5619,7 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___include_favicon'
   | 'pluginOptions___cacheDigest'
   | 'pluginOptions___classPrefix'
+  | 'pluginOptions___maxWidth'
   | 'pluginOptions___linkImagesToOriginal'
   | 'pluginOptions___withWebp'
   | 'pluginOptions___backgroundColor'
@@ -5764,6 +5775,7 @@ export type SitePluginPluginOptions = {
   include_favicon?: Maybe<Scalars['Boolean']>;
   cacheDigest?: Maybe<Scalars['String']>;
   classPrefix?: Maybe<Scalars['String']>;
+  maxWidth?: Maybe<Scalars['Int']>;
   linkImagesToOriginal?: Maybe<Scalars['Boolean']>;
   withWebp?: Maybe<Scalars['Boolean']>;
   backgroundColor?: Maybe<Scalars['String']>;
@@ -5809,6 +5821,7 @@ export type SitePluginPluginOptionsFilterInput = {
   include_favicon?: Maybe<BooleanQueryOperatorInput>;
   cacheDigest?: Maybe<StringQueryOperatorInput>;
   classPrefix?: Maybe<StringQueryOperatorInput>;
+  maxWidth?: Maybe<IntQueryOperatorInput>;
   linkImagesToOriginal?: Maybe<BooleanQueryOperatorInput>;
   withWebp?: Maybe<BooleanQueryOperatorInput>;
   backgroundColor?: Maybe<StringQueryOperatorInput>;
@@ -5867,6 +5880,7 @@ export type SitePluginPluginOptionsPluginsFilterListInput = {
 
 export type SitePluginPluginOptionsPluginsPluginOptions = {
   classPrefix?: Maybe<Scalars['String']>;
+  maxWidth?: Maybe<Scalars['Int']>;
   linkImagesToOriginal?: Maybe<Scalars['Boolean']>;
   withWebp?: Maybe<Scalars['Boolean']>;
   backgroundColor?: Maybe<Scalars['String']>;
@@ -5874,6 +5888,7 @@ export type SitePluginPluginOptionsPluginsPluginOptions = {
 
 export type SitePluginPluginOptionsPluginsPluginOptionsFilterInput = {
   classPrefix?: Maybe<StringQueryOperatorInput>;
+  maxWidth?: Maybe<IntQueryOperatorInput>;
   linkImagesToOriginal?: Maybe<BooleanQueryOperatorInput>;
   withWebp?: Maybe<BooleanQueryOperatorInput>;
   backgroundColor?: Maybe<StringQueryOperatorInput>;
@@ -5930,35 +5945,30 @@ export type WebPOptions = {
 export type Unnamed_1_QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type Unnamed_1_Query = { placeholderImage?: Maybe<{ childImageSharp?: Maybe<{ fluid?: Maybe<GatsbyImageSharpFluidFragment> }> }> };
+export type Unnamed_1_Query = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author'>> }> };
 
 export type Unnamed_2_QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type Unnamed_2_Query = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author'>> }> };
+export type Unnamed_2_Query = { contentfulAbout?: Maybe<{ profile?: Maybe<{ childMarkdownRemark?: Maybe<Pick<MarkdownRemark, 'html'>> }>, site?: Maybe<{ childMarkdownRemark?: Maybe<Pick<MarkdownRemark, 'html'>> }> }>, file?: Maybe<{ childImageSharp?: Maybe<{ fluid?: Maybe<GatsbyImageSharpFluid_WithWebpFragment> }> }> };
 
-export type Unnamed_3_QueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type Unnamed_3_Query = { contentfulAbout?: Maybe<{ profile?: Maybe<{ childMarkdownRemark?: Maybe<Pick<MarkdownRemark, 'html'>> }>, site?: Maybe<{ childMarkdownRemark?: Maybe<Pick<MarkdownRemark, 'html'>> }> }>, file?: Maybe<{ childImageSharp?: Maybe<{ fluid?: Maybe<GatsbyImageSharpFluid_WithWebpFragment> }> }> };
-
-export type Unnamed_4_QueryVariables = Exact<{
+export type Unnamed_3_QueryVariables = Exact<{
   skip: Scalars['Int'];
   limit: Scalars['Int'];
 }>;
 
 
-export type Unnamed_4_Query = { allContentfulBlogPost: { edges: Array<{ node: (
+export type Unnamed_3_Query = { allContentfulBlogPost: { edges: Array<{ node: (
         Pick<ContentfulBlogPost, 'title' | 'id' | 'slug' | 'publishDate'>
         & { category?: Maybe<Array<Maybe<Pick<ContentfulCategory, 'name' | 'slug' | 'id'>>>> }
       ) }> } };
 
-export type Unnamed_5_QueryVariables = Exact<{
+export type Unnamed_4_QueryVariables = Exact<{
   id: Scalars['String'];
 }>;
 
 
-export type Unnamed_5_Query = { contentfulBlogPost?: Maybe<(
+export type Unnamed_4_Query = { contentfulBlogPost?: Maybe<(
     Pick<ContentfulBlogPost, 'title' | 'publishDate'>
     & { category?: Maybe<Array<Maybe<Pick<ContentfulCategory, 'name' | 'slug' | 'id'>>>>, content?: Maybe<{ childMarkdownRemark?: Maybe<Pick<MarkdownRemark, 'html'>> }> }
   )> };

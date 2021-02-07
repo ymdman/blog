@@ -43,34 +43,43 @@ const logo = css`
   }
 `;
 
-const anchor = css`
+const title = css`
   color: inherit;
   text-decoration: none;
+  padding: 5px 0;
 `;
 
 const list = css`
   display: flex;
   align-items: center;
   list-style: none;
+  margin-right: -5px;
 
   & > li + li {
     margin-left: 50px;
   }
 
-  & > lI {
-    transition: opacity 200ms;
+  @media screen and (max-width: ${layout.threshold}px) {
+    & > li + li {
+      margin-left: 20px;
+    }
   }
+`;
 
-  & > li:hover {
-    opacity: 0.5;
+const anchor = css`
+  color: inherit;
+  text-decoration: none;
+  padding: 5px;
+  transition: opacity 200ms;
+
+  @media (hover: hover) {
+    &:hover {
+      opacity: 0.5;
+    }
   }
 
   @media screen and (max-width: ${layout.threshold}px) {
     font-size: ${fontSize.small};
-
-    & > li + li {
-      margin-left: 20px;
-    }
   }
 `;
 
@@ -96,7 +105,7 @@ const LogoSecondary = () => {
 
 const Title = () => {
   return (
-    <Link to="/" css={anchor}>
+    <Link to="/" css={title}>
       ymdman.com
     </Link>
   );

@@ -82,13 +82,16 @@ const sns = css`
 
 const anchor = css`
   color: inherit;
-
-  &:hover {
-    opacity: 0.5;
-  }
+  transition: opacity 200ms;
 
   & + & {
     margin-left: 10px;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      opacity: 0.5;
+    }
   }
 `;
 

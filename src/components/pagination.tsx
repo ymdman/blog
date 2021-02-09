@@ -5,7 +5,7 @@ import IconArrowRight from '../components/icons/arrowRight';
 import { css } from '@emotion/react';
 import { color } from '../styles/settings';
 
-type Pagination = {
+type Props = {
   currentPage: number;
   length: number;
   limit: number;
@@ -38,7 +38,7 @@ const iconRight = css`
   margin-left: 5px;
 `;
 
-const Pagination: React.FC<Pagination> = ({
+const Pagination: React.FC<Props> = ({
   currentPage,
   length,
   limit,

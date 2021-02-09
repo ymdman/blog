@@ -2,7 +2,7 @@ import React from 'react';
 import { css } from '@emotion/react';
 import { color, fontSize, layout } from '../styles/settings';
 
-type Label = {
+type Props = {
   label?: string | null;
 };
 
@@ -22,7 +22,7 @@ const heading = css`
   }
 `;
 
-const sectionHeading: React.FC<Label> = ({ label }) => {
+const sectionHeading: React.FC<Props> = ({ label }) => {
   return <h2 css={heading}>{label}</h2>;
 };
 

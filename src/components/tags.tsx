@@ -3,7 +3,7 @@ import { ContentfulCategory } from '../../graphql-types';
 import { css } from '@emotion/react';
 import { color, fontSize } from '../styles/settings';
 
-type Category = {
+type Props = {
   category?: (ContentfulCategory | null)[] | null;
 };
 
@@ -29,7 +29,7 @@ const tag = css`
   }
 `;
 
-const Tags: React.FC<Category> = ({ category }) => {
+const Tags: React.FC<Props> = ({ category }) => {
   return (
     <ul css={tags}>
       {category?.map(item => (

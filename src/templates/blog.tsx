@@ -16,7 +16,7 @@ import SEO from '../components/seo';
 import { css } from '@emotion/react';
 import { color, layout } from '../styles/settings';
 
-type Blog = {
+type Props = {
   data: {
     allContentfulBlogPost: ContentfulBlogPostConnection;
   };
@@ -56,7 +56,7 @@ const pagination = css`
   margin-top: 80px;
 `;
 
-const Blog: React.FC<Blog> = ({ data, pageContext }) => {
+const Blog: React.FC<Props> = ({ data, pageContext }) => {
   const pathName =
     typeof window !== 'undefined' ? window.location.pathname : '';
 

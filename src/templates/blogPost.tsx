@@ -19,7 +19,7 @@ type MarkdownRemark = {
   };
 };
 
-type BlogPost = {
+type Props = {
   data: {
     contentfulBlogPost: ContentfulBlogPost & MarkdownRemark;
   };
@@ -34,7 +34,7 @@ const article = css`
   }
 `;
 
-const blogPostPage: React.FC<BlogPost> = ({ data }) => {
+const blogPostPage: React.FC<Props> = ({ data }) => {
   const post = data.contentfulBlogPost;
   const pathName =
     typeof window !== 'undefined' ? window.location.pathname : '';

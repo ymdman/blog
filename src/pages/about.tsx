@@ -25,7 +25,7 @@ type MarkdownRemark = {
   profile: ChildMarkdownRemark;
 };
 
-type About = {
+type Props = {
   data: {
     contentfulAbout: ContentfulAbout & MarkdownRemark;
     file: {
@@ -95,7 +95,7 @@ const anchor = css`
   }
 `;
 
-const AboutPage: React.FC<About> = ({ data }) => {
+const AboutPage: React.FC<Props> = ({ data }) => {
   return (
     <Layout>
       <SEO title="About" />

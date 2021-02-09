@@ -1,9 +1,9 @@
 import React from 'react';
 import { Scalars } from '../../graphql-types';
 
-type PublishDate = Scalars['Date'];
+type Props = Scalars['Date'];
 
-const Time: React.FC<PublishDate> = ({ publishDate }) => {
+const Time: React.FC<Props> = ({ publishDate }) => {
   const dateTime = publishDate.replace(
     /(\d{4})年(\d{2})月(\d{2})日/,
     '$1-$2-$3'

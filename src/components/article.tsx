@@ -3,7 +3,7 @@ import { css } from '@emotion/react';
 import { color, fontSize, layout } from '../styles/settings';
 import 'prismjs/themes/prism-tomorrow.css';
 
-type MarkdownRemark = {
+type Props = {
   html: string;
 };
 
@@ -104,7 +104,7 @@ const container = css`
   }
 `;
 
-const Article: React.FC<MarkdownRemark> = ({ html }) => {
+const Article: React.FC<Props> = ({ html }) => {
   return (
     <div
       dangerouslySetInnerHTML={{

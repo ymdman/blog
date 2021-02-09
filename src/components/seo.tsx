@@ -2,7 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 
-type Seo = {
+type Props = {
   description?: string;
   lang?: string;
   title?: string;
@@ -10,7 +10,7 @@ type Seo = {
   pagePath?: string;
 };
 
-const SEO: React.FC<Seo> = ({ description, lang, meta, title, pagePath }) => {
+const SEO: React.FC<Props> = ({ description, lang, meta, title, pagePath }) => {
   const { site } = useStaticQuery(
     graphql`
       query {

@@ -74,5 +74,11 @@ module.exports = {
         host: process.env.CONTENTFUL_HOST,
       },
     },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: `UA-189393328-1`,
+      },
+    },
   ],
 };

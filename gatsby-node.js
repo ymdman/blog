@@ -21,6 +21,15 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           }
         }
       }
+      allContentfulCategory {
+        edges {
+          node {
+            slug
+            id
+            name
+          }
+        }
+      }
     }
   `);
 
@@ -57,6 +66,22 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         currentPage: i + 1,
         isFirst: i + 1 === 1,
         isLast: i + 1 === blogPageLength,
+      },
+    });
+  });
+
+  blogResult.data.allContentfulCategory.edges.forEach(({ node }) => {
+    createPage({
+      path: `/category/${node.slug}`,
+      component: path.resolve('./src/templates/category.tsx'),
+      context: {
+        id: node.id,
+        name: node.name,
+        skip: 0,
+        limit: 100,
+        currentPage: 1,
+        isFirst: true,
+        isLast: true,
       },
     });
   });

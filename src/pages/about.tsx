@@ -67,7 +67,7 @@ const avatar = css`
   }
 `;
 
-const description = css`
+const detail = css`
   margin-left: 30px;
 
   @media screen and (max-width: ${layout.threshold}px) {
@@ -96,9 +96,16 @@ const anchor = css`
 `;
 
 const AboutPage: React.FC<Props> = ({ data }) => {
+  const html = data.contentfulAbout.site?.childMarkdownRemark?.html;
+  const str = html.match(/<p>[\s\S]*?<\/p>/i)![0];
+  const description = `${str.replace(/<\/?[^>]+>/g, '').slice(0, 70)}…`;
+
+  const pathName =
+    typeof window !== 'undefined' ? window.location.pathname : '';
+
   return (
     <Layout>
-      <SEO title="About" />
+      <SEO title="About" description={description} pagePath={pathName} />
       <Heading label={'About'} />
       <Body>
         <Section>
@@ -115,7 +122,7 @@ const AboutPage: React.FC<Props> = ({ data }) => {
             <div css={avatar}>
               <Img fluid={data.file.childImageSharp.fluid} />
             </div>
-            <div css={description}>
+            <div css={detail}>
               <Article
                 html={data.contentfulAbout.profile?.childMarkdownRemark?.html}
               />

@@ -39,9 +39,13 @@ const blogPostPage: React.FC<Props> = ({ data }) => {
   const pathName =
     typeof window !== 'undefined' ? window.location.pathname : '';
 
+  const html = post.content.childMarkdownRemark.html;
+  const str = html.replace(/<\/?[^>]+>/g, '').trim();
+  const description = `${str.slice(0, 70)}…`;
+
   return (
     <Layout>
-      <SEO title={post.title!} description={''} pagePath={pathName} />
+      <SEO title={post.title!} description={description} pagePath={pathName} />
       <Heading label={post.title} />
       <Body>
         <Time publishDate={post.publishDate} />

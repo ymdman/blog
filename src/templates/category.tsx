@@ -56,9 +56,7 @@ const pagination = css`
   margin-top: 80px;
 `;
 
-const Blog: React.FC<Props> = ({ data, pageContext }) => {
-  console.log(pageContext);
-
+const Category: React.FC<Props> = ({ data, pageContext }) => {
   const pathName =
     typeof window !== 'undefined' ? window.location.pathname : '';
 
@@ -121,4 +119,4 @@ export const query = graphql`
   }
 `;
 
-export default Blog;
+export default Category;

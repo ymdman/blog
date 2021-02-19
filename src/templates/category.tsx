@@ -62,7 +62,11 @@ const Category: React.FC<Props> = ({ data, pageContext }) => {
 
   return (
     <Layout>
-      <SEO title="Blog" description="" pagePath={pathName} />
+      <SEO
+        title={pageContext.name!}
+        description={`${pageContext.name}ページ一覧です`}
+        pagePath={pathName}
+      />
       <Heading label={pageContext.name} />
       <Body>
         {data.allContentfulBlogPost.edges.map(({ node }) => (

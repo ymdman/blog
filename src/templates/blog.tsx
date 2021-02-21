@@ -71,17 +71,17 @@ const Blog: React.FC<Props> = ({ data, pageContext }) => {
       <Body>
         {data.allContentfulBlogPost.edges.map(({ node }) => (
           <Section key={node.id}>
-            <Link to={`/blog/post/${node.slug}`} css={anchor}>
-              <div css={sectionHeading}>
+            <div css={sectionHeading}>
+              <Link to={`/blog/post/${node.slug}`} css={anchor}>
                 <SectionHeading label={node.title} />
-              </div>
-              <div css={time}>
-                <Time publishDate={node.publishDate} />
-              </div>
-              <div css={tags}>
-                <Tags category={node.category} />
-              </div>
-            </Link>
+              </Link>
+            </div>
+            <div css={time}>
+              <Time publishDate={node.publishDate} />
+            </div>
+            <div css={tags}>
+              <Tags category={node.category} />
+            </div>
           </Section>
         ))}
         <div css={pagination}>

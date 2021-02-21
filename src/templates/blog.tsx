@@ -23,16 +23,15 @@ type Props = {
   pageContext: SitePageContext;
 };
 
-const sectionHeading = css`
-  transition: opacity 200ms;
-`;
-
 const anchor = css`
   display: block;
   color: ${color.font.primary};
+  transition: opacity 200ms;
 
-  &:hover .css-${sectionHeading.name} {
-    opacity: 0.5;
+  @media (hover: hover) {
+    &:hover {
+      opacity: 0.5;
+    }
   }
 
   @media (prefers-color-scheme: dark) {
@@ -71,11 +70,9 @@ const Blog: React.FC<Props> = ({ data, pageContext }) => {
       <Body>
         {data.allContentfulBlogPost.edges.map(({ node }) => (
           <Section key={node.id}>
-            <div css={sectionHeading}>
-              <Link to={`/blog/post/${node.slug}`} css={anchor}>
-                <SectionHeading label={node.title} />
-              </Link>
-            </div>
+            <Link to={`/blog/post/${node.slug}`} css={anchor}>
+              <SectionHeading label={node.title} />
+            </Link>
             <div css={time}>
               <Time publishDate={node.publishDate} />
             </div>

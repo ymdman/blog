@@ -81,15 +81,17 @@ const Blog: React.FC<Props> = ({ data, pageContext }) => {
             </div>
           </Section>
         ))}
-        <div css={pagination}>
-          <Pagination
-            currentPage={pageContext.currentPage!}
-            length={pageContext.length!}
-            limit={pageContext.limit!}
-            isFirst={pageContext.isFirst!}
-            isLast={pageContext.isLast!}
-          />
-        </div>
+        {pageContext.length! > pageContext.limit! && (
+          <div css={pagination}>
+            <Pagination
+              currentPage={pageContext.currentPage!}
+              length={pageContext.length!}
+              limit={pageContext.limit!}
+              isFirst={pageContext.isFirst!}
+              isLast={pageContext.isLast!}
+            />
+          </div>
+        )}
       </Body>
     </Layout>
   );

@@ -1,5 +1,5 @@
 import React from 'react';
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
 import {
   ContentfulBlogPostConnection,
   SitePageContext,
@@ -14,7 +14,7 @@ import Time from '../components/time';
 import Pagination from '../components/pagination';
 import SEO from '../components/seo';
 import { css } from '@emotion/react';
-import { color, layout } from '../styles/settings';
+import { layout } from '../styles/settings';
 
 type Props = {
   data: {
@@ -22,22 +22,6 @@ type Props = {
   };
   pageContext: SitePageContext;
 };
-
-const anchor = css`
-  display: block;
-  color: ${color.font.primary};
-  transition: opacity 200ms;
-
-  @media (hover: hover) {
-    &:hover {
-      opacity: 0.5;
-    }
-  }
-
-  @media (prefers-color-scheme: dark) {
-    color: ${color.font.secondary};
-  }
-`;
 
 const time = css`
   margin-top: 15px;
@@ -70,9 +54,10 @@ const Category: React.FC<Props> = ({ data, pageContext }) => {
       <Body>
         {data.allContentfulBlogPost.edges.map(({ node }) => (
           <Section key={node.id}>
-            <Link to={`/blog/post/${node.slug}`} css={anchor}>
-              <SectionHeading label={node.title} />
-            </Link>
+            <SectionHeading
+              src={`/blog/post/${node.slug}`}
+              label={node.title}
+            />
             <div css={time}>
               <Time publishDate={node.publishDate} />
             </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'gatsby';
 import { ContentfulCategory } from '../../graphql-types';
 import { css } from '@emotion/react';
 import { color, fontSize } from '../styles/settings';
@@ -13,7 +14,6 @@ const tags = css`
 `;
 
 const tag = css`
-  padding: 3px 5px 2px;
   border-radius: 3px;
   background-color: ${color.background.primary};
   color: ${color.font.primary};
@@ -29,12 +29,27 @@ const tag = css`
   }
 `;
 
+const anchor = css`
+  display: block;
+  padding: 3px 5px 2px;
+  color: inherit;
+  transition: opacity 200ms;
+
+  @media (hover: hover) {
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+`;
+
 const Tags: React.FC<Props> = ({ category }) => {
   return (
     <ul css={tags}>
       {category?.map(item => (
         <li key={item?.id} css={tag}>
-          {item?.name}
+          <Link to={`/category/${item?.slug}`} css={anchor}>
+            {item?.name}
+          </Link>
         </li>
       ))}
     </ul>

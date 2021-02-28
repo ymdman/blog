@@ -30,6 +30,11 @@ const globalStyle = css`
   svg {
     fill: currentColor;
   }
+
+  ::selection {
+    background-color: ${color.theme};
+    color: #fff;
+  }
 `;
 
 export default globalStyle;

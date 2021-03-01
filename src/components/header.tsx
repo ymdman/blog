@@ -47,6 +47,13 @@ const title = css`
   color: inherit;
   text-decoration: none;
   padding: 5px 0;
+  transition: opacity 200ms;
+
+  @media (hover: hover) {
+    &:hover {
+      opacity: 0.5;
+    }
+  }
 `;
 
 const list = css`

@@ -17,14 +17,16 @@ const title = css`
   line-height: 1;
 `;
 
-const NotFoundPage = () => (
-  <Layout>
-    <SEO title="404 Not Found" />
-    <div css={container}>
-      <h1 css={title}>404</h1>
-      <p>Not Found</p>
-    </div>
-  </Layout>
-);
+const NotFoundPage = () => {
+  return (
+    <Layout>
+      <SEO title="404 Not Found" />
+      <div css={container}>
+        <h1 css={title}>404</h1>
+        <p>Not Found</p>
+      </div>
+    </Layout>
+  );
+};
 
 export default NotFoundPage;

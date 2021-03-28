@@ -13,6 +13,7 @@ const color = {
     primary: '#e2e2e2',
     secondary: '#333',
   },
+  anchor: '#5277fd',
 };
 
 const fontSize = {

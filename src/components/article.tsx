@@ -59,7 +59,7 @@ const container = css`
   }
 
   & a {
-    color: #5277fd;
+    color: ${color.anchor};
     text-decoration: underline;
 
     &:hover {

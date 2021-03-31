@@ -94,7 +94,7 @@ const icon = css`
   display: flex;
 `;
 
-const LogoPrimary = () => {
+const LogoHeading = () => {
   return (
     <h1 css={logo}>
       <Title />
@@ -102,7 +102,7 @@ const LogoPrimary = () => {
   );
 };
 
-const LogoSecondary = () => {
+const LogoParagraph = () => {
   return (
     <p css={logo}>
       <Title />
@@ -126,7 +126,7 @@ const Header = () => {
   return (
     <header css={container}>
       <div css={inner}>
-        {isTopPage ? <LogoPrimary /> : <LogoSecondary />}
+        {isTopPage ? <LogoHeading /> : <LogoParagraph />}
         <nav>
           <ul css={list}>
             <li>

@@ -31,6 +31,11 @@
     "react-tsparticles": "^1.18.11"
   },
   "devDependencies": {
+    "@babel/core": "^7.13.14",
+    "@storybook/addon-actions": "^6.2.1",
+    "@storybook/addon-essentials": "^6.2.1",
+    "@storybook/addon-links": "^6.2.1",
+    "@storybook/react": "^6.2.1",
     "@types/node": "^14.14.10",
     "@types/prismjs": "^1.16.2",
     "@types/react": "^17.0.0",
@@ -39,6 +44,7 @@
     "@typescript-eslint/eslint-plugin": "^4.9.0",
     "@typescript-eslint/parser": "^4.9.0",
     "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.2.2",
     "eslint": "^7.14.0",
     "eslint-config-prettier": "^6.15.0",
     "eslint-loader": "^4.0.2",
@@ -59,6 +65,8 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   }
 }

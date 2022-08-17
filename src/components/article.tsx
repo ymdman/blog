@@ -11,7 +11,8 @@ const container = css`
   & > * + p,
   & > * + ul,
   & > * + ol,
-  & > * + div {
+  & > * + div,
+  & > * + table {
     margin-top: 15px;
   }
 
@@ -65,6 +66,18 @@ const container = css`
     &:hover {
       text-decoration: none;
     }
+  }
+
+  & table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid ${color.border.secondary};
+  }
+
+  & th,
+  & td {
+    padding: 5px 10px;
+    border: 1px solid ${color.border.secondary};
   }
 
   @media (prefers-color-scheme: dark) {

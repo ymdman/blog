@@ -42,13 +42,20 @@ const container = css`
     margin-top: 5px;
   }
 
-  & > ul {
+  & ul,
+  & ol {
     margin-left: 20px;
+  }
+
+  & > ul {
     list-style: disc;
   }
 
+  & > ul > li > ul {
+    list-style: circle;
+  }
+
   & > ol {
-    margin-left: 20px;
     list-style: decimal;
   }
 

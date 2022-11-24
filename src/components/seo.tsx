@@ -1,6 +1,6 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
-import { useStaticQuery, graphql } from 'gatsby';
+import Head from 'next/head';
+// import { useStaticQuery, graphql } from 'gatsby';
 
 type Props = {
   description?: string;
@@ -11,69 +11,33 @@ type Props = {
 };
 
 const SEO: React.FC<Props> = ({ description, lang, meta, title, pagePath }) => {
-  const { site } = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-            description
-            author
-          }
-        }
-      }
-    `
-  );
+  // const { site } = useStaticQuery(
+  //   graphql`
+  //     query {
+  //       site {
+  //         siteMetadata {
+  //           title
+  //           description
+  //           author
+  //         }
+  //       }
+  //     }
+  //   `
+  // );
 
-  const metaDescription = description || site.siteMetadata.description;
-  const defaultTitle = site.siteMetadata?.title;
+  // const metaDescription = description || site.siteMetadata.description;
 
   return (
-    <Helmet
-      htmlAttributes={{
-        lang,
-      }}
-      title={title}
-      titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : undefined}
-      meta={[
-        {
-          name: 'description',
-          content: metaDescription,
-        },
-        {
-          property: 'og:title',
-          content: title,
-        },
-        {
-          property: 'og:description',
-          content: metaDescription,
-        },
-        {
-          property: 'og:type',
-          content: 'website',
-        },
-        {
-          property: 'og:url',
-          content: pagePath,
-        },
-        {
-          name: 'twitter:card',
-          content: 'summary',
-        },
-        {
-          name: 'twitter:creator',
-          content: site.siteMetadata?.author || '',
-        },
-        {
-          name: 'twitter:title',
-          content: title,
-        },
-        {
-          name: 'twitter:description',
-          content: metaDescription,
-        },
-      ].concat(meta!)}
-    />
+    <Head>
+      <title>{title}</title>
+      <meta name="description" content="test" />
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content="test" />
+      <meta property="og:type" content="website" />
+      <meta property="twitter:card" content="summary" />
+      <meta property="twitter:title" content={title} />
+      <meta property="twitter:description" content={description} />
+    </Head>
   );
 };
 

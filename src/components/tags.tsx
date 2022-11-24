@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'gatsby';
+import Link from 'next/link';
 import { ContentfulCategory } from '../../graphql-types';
 import { css } from '@emotion/react';
 import { color, fontSize } from '../styles/settings';
@@ -47,7 +47,7 @@ const Tags: React.FC<Props> = ({ category }) => {
     <ul css={tags}>
       {category?.map(item => (
         <li key={item?.id} css={tag}>
-          <Link to={`/category/${item?.slug}`} css={anchor}>
+          <Link href={`/category/${item?.slug}`} css={anchor}>
             {item?.name}
           </Link>
         </li>

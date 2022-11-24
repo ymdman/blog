@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'gatsby';
+import Link from 'next/link';
 import { css } from '@emotion/react';
 import { color, fontSize, layout } from '../styles/settings';
 
@@ -44,7 +44,7 @@ const sectionHeading: React.FC<Props> = ({ src, label }) => {
   return (
     <>
       {src ? (
-        <Link to={src} css={anchor}>
+        <Link href={src} css={anchor}>
           <h2 css={heading}>{label}</h2>
         </Link>
       ) : (

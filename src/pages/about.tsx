@@ -1,7 +1,7 @@
 import React from 'react';
-import { graphql } from 'gatsby';
-import { ContentfulAbout, ImageSharpFluid } from '../../graphql-types';
-import Img, { FluidObject } from 'gatsby-image';
+// import { graphql } from 'gatsby';
+// import { ContentfulAbout, ImageSharpFluid } from '../../graphql-types';
+// import Img, { FluidObject } from 'gatsby-image';
 import SEO from '../components/seo';
 import Layout from '../components/layout';
 import Heading from '../components/heading';
@@ -107,21 +107,21 @@ const AboutPage: React.FC<Props> = ({ data }) => {
         <Section>
           <SectionHeading label={'This Site'} />
           <div css={article}>
-            <Article
+            {/* <Article
               html={data.contentfulAbout.site?.childMarkdownRemark?.html}
-            />
+            /> */}
           </div>
         </Section>
         <Section>
           <SectionHeading label={'Profile'} />
           <div css={profile}>
             <div css={avatar}>
-              <Img fluid={data.file.childImageSharp.fluid} />
+              {/* <Img fluid={data.file.childImageSharp.fluid} /> */}
             </div>
             <div css={detail}>
-              <Article
+              {/* <Article
                 html={data.contentfulAbout.profile?.childMarkdownRemark?.html}
-              />
+              /> */}
               <div css={sns}>
                 <a
                   href="https://github.com/ymdman"
@@ -148,28 +148,28 @@ const AboutPage: React.FC<Props> = ({ data }) => {
   );
 };
 
-export const query = graphql`
-  query {
-    contentfulAbout {
-      profile {
-        childMarkdownRemark {
-          html
-        }
-      }
-      site {
-        childMarkdownRemark {
-          html
-        }
-      }
-    }
-    file(relativePath: { eq: "avatar.jpg" }) {
-      childImageSharp {
-        fluid(maxWidth: 300) {
-          ...GatsbyImageSharpFluid_withWebp
-        }
-      }
-    }
-  }
-`;
+// export const query = graphql`
+//   query {
+//     contentfulAbout {
+//       profile {
+//         childMarkdownRemark {
+//           html
+//         }
+//       }
+//       site {
+//         childMarkdownRemark {
+//           html
+//         }
+//       }
+//     }
+//     file(relativePath: { eq: "avatar.jpg" }) {
+//       childImageSharp {
+//         fluid(maxWidth: 300) {
+//           ...GatsbyImageSharpFluid_withWebp
+//         }
+//       }
+//     }
+//   }
+// `;
 
 export default AboutPage;

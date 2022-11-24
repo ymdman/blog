@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'gatsby';
+import Link from 'next/link';
 import IconArrowLeft from '../components/icons/arrowLeft';
 import IconArrowRight from '../components/icons/arrowRight';
 import { css } from '@emotion/react';
@@ -54,14 +54,14 @@ const Pagination: React.FC<Props> = ({
     <>
       {length > limit && (
         <div css={container}>
-          <Link to={isFirst ? '/' : prevPage} css={[item, firstItemDisabled]}>
+          <Link href={isFirst ? '/' : prevPage} css={[item, firstItemDisabled]}>
             <div css={iconLeft}>
               <IconArrowLeft width={20} height={20} />
             </div>
             <span>Prev</span>
           </Link>
           <Link
-            to={isLast ? '/' : `/blog/${currentPage + 1}`}
+            href={isLast ? '/' : `/blog/${currentPage + 1}`}
             css={[item, lastItemDisabled]}
           >
             <span>Next</span>

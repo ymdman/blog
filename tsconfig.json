@@ -1,9 +1,14 @@
 {
-  "include": ["./src/**/*"],
+  "include": [
+    "./src/**/*"
+  ],
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
-    "lib": ["dom", "es2017"],
+    "lib": [
+      "dom",
+      "es2017"
+    ],
     "jsx": "preserve",
     "strict": true,
     "esModuleInterop": true,
@@ -14,7 +19,16 @@
     "moduleResolution": "node",
     "jsxImportSource": "@emotion/react",
     "plugins": [
-      { "name": "typescript-styled-plugin" }
-    ]
-  }
+      {
+        "name": "typescript-styled-plugin"
+      }
+    ],
+    "allowJs": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true
+  },
+  "exclude": [
+    "node_modules"
+  ]
 }

@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'gatsby';
+import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
 import useDeviceChecked from '../hooks/useDeviceChecked';
 import IconGitHub from './icons/github';
 import { css } from '@emotion/react';
@@ -112,16 +112,20 @@ const LogoParagraph = () => {
 
 const Title = () => {
   return (
-    <Link to="/" css={title}>
+    <Link href="/" css={title}>
       ymdman.com
     </Link>
   );
 };
 
 const Header = () => {
+  const [isTopPage, setTopPage] = useState(false);
+
   const isDesktop = useDeviceChecked() === 'desktop';
-  const isTopPage =
-    typeof window !== 'undefined' && window.location.pathname === '/';
+  // const isTopPage =
+  //   typeof window !== 'undefined' && window.location.pathname === '/';
+
+  useEffect(() => setTopPage(location.pathname === '/'), []);
 
   return (
     <header css={container}>
@@ -130,12 +134,12 @@ const Header = () => {
         <nav>
           <ul css={list}>
             <li>
-              <Link to="/about" css={anchor}>
+              <Link href="/about" css={anchor}>
                 About
               </Link>
             </li>
             <li>
-              <Link to="/blog" css={anchor}>
+              <Link href="/blog" css={anchor}>
                 Blog
               </Link>
             </li>

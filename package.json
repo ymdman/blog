@@ -6,7 +6,8 @@
   "author": "ymdman",
   "dependencies": {
     "@emotion/react": "^11.1.5",
-    "@emotion/styled": "^11.1.5",
+    "contentful": "^9.2.13",
+    "contentful-management": "^10.21.5",
     "emotion-reset": "^3.0.0",
     "next": "^13.0.4",
     "prismjs": "^1.23.0",
@@ -25,6 +26,7 @@
     "@types/react-dom": "^17.0.0",
     "@typescript-eslint/eslint-plugin": "^4.9.0",
     "@typescript-eslint/parser": "^4.9.0",
+    "contentful-typescript-codegen": "^3.3.0",
     "eslint": "^7.14.0",
     "eslint-config-prettier": "^6.15.0",
     "eslint-loader": "^4.0.2",
@@ -42,6 +44,7 @@
     "typecheck": "tsc",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "start": "next start",
+    "contentful-typescript-codegen": "contentful-typescript-codegen --output ./src/type/contentful.d.ts",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   }

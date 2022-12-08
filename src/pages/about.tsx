@@ -1,5 +1,6 @@
 import React from 'react';
 import { GetStaticProps } from 'next';
+import Image from 'next/image';
 import client from '../api/contentful';
 import { IAbout } from '../type/contentful';
 import SEO from '../components/seo';
@@ -51,7 +52,12 @@ const AboutPage: React.VFC<AboutProps> = ({ about }) => {
           <SectionHeading label={'Profile'} />
           <div css={profile}>
             <div css={avatar}>
-              {/* <Img fluid={data.file.childImageSharp.fluid} /> */}
+              <Image
+                src="/images/avatar.jpg"
+                alt="プロフィール画像"
+                width="120"
+                height="120"
+              />
             </div>
             <div css={detail}>
               <Article html={about.fields.profile ?? ''} />

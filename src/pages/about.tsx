@@ -32,8 +32,6 @@ type AboutProps = {
 };
 
 const AboutPage: React.VFC<AboutProps> = ({ about }) => {
-  console.log('about', about);
-
   const pathName =
     typeof window !== 'undefined' ? window.location.pathname : '';
 

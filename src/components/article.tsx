@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactMarkdown from 'react-markdown';
 import { css } from '@emotion/react';
 import { color, fontSize, layout } from '../styles/settings';
 import 'prismjs/themes/prism-tomorrow.css';
@@ -125,14 +126,7 @@ const container = css`
 `;
 
 const Article: React.FC<Props> = ({ html }) => {
-  return (
-    <div
-      dangerouslySetInnerHTML={{
-        __html: html,
-      }}
-      css={container}
-    ></div>
-  );
+  return <ReactMarkdown css={container}>{html}</ReactMarkdown>;
 };
 
 export default Article;

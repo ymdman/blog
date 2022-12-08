@@ -1,7 +1,7 @@
 import React from 'react';
-// import { graphql } from 'gatsby';
-// import { ContentfulAbout, ImageSharpFluid } from '../../graphql-types';
-// import Img, { FluidObject } from 'gatsby-image';
+import { GetStaticProps } from 'next';
+import client from '../api/contentful';
+import { IAbout } from '../type/contentful';
 import SEO from '../components/seo';
 import Layout from '../components/layout';
 import Heading from '../components/heading';
@@ -14,26 +14,71 @@ import IconTwitter from '../components/icons/twitter';
 import { css } from '@emotion/react';
 import { color, layout } from '../styles/settings';
 
-type ChildMarkdownRemark = {
-  childMarkdownRemark: {
-    html: string;
+export const getStaticProps: GetStaticProps = async () => {
+  const about = await client.getEntries({
+    content_type: 'about',
+  });
+
+  return {
+    props: {
+      about: about.items[0],
+    },
   };
 };
 
-type MarkdownRemark = {
-  site: ChildMarkdownRemark;
-  profile: ChildMarkdownRemark;
+type AboutProps = {
+  about: IAbout;
 };
 
-type Props = {
-  data: {
-    contentfulAbout: ContentfulAbout & MarkdownRemark;
-    file: {
-      childImageSharp: {
-        fluid: ImageSharpFluid & FluidObject;
-      };
-    };
-  };
+const AboutPage: React.VFC<AboutProps> = ({ about }) => {
+  console.log('about', about);
+
+  const pathName =
+    typeof window !== 'undefined' ? window.location.pathname : '';
+
+  return (
+    <Layout>
+      <SEO title="About" description="Aboutページです。" pagePath={pathName} />
+      <Heading label={'About'} />
+      <Body>
+        <Section>
+          <SectionHeading label={'This Site'} />
+          <div css={article}>
+            <Article html={about.fields.site ?? ''} />
+          </div>
+        </Section>
+        <Section>
+          <SectionHeading label={'Profile'} />
+          <div css={profile}>
+            <div css={avatar}>
+              {/* <Img fluid={data.file.childImageSharp.fluid} /> */}
+            </div>
+            <div css={detail}>
+              <Article html={about.fields.profile ?? ''} />
+              <div css={sns}>
+                <a
+                  href="https://github.com/ymdman"
+                  rel="noreferrer"
+                  target="_blank"
+                  css={anchor}
+                >
+                  <IconGitHub width={22} height={22} />
+                </a>
+                <a
+                  href="https://twitter.com/yama80059601"
+                  rel="noreferrer"
+                  target="_blank"
+                  css={anchor}
+                >
+                  <IconTwitter width={22} height={22} />
+                </a>
+              </div>
+            </div>
+          </div>
+        </Section>
+      </Body>
+    </Layout>
+  );
 };
 
 const article = css`
@@ -94,82 +139,5 @@ const anchor = css`
     }
   }
 `;
-
-const AboutPage: React.FC<Props> = ({ data }) => {
-  const pathName =
-    typeof window !== 'undefined' ? window.location.pathname : '';
-
-  return (
-    <Layout>
-      <SEO title="About" description="Aboutページです。" pagePath={pathName} />
-      <Heading label={'About'} />
-      <Body>
-        <Section>
-          <SectionHeading label={'This Site'} />
-          <div css={article}>
-            {/* <Article
-              html={data.contentfulAbout.site?.childMarkdownRemark?.html}
-            /> */}
-          </div>
-        </Section>
-        <Section>
-          <SectionHeading label={'Profile'} />
-          <div css={profile}>
-            <div css={avatar}>
-              {/* <Img fluid={data.file.childImageSharp.fluid} /> */}
-            </div>
-            <div css={detail}>
-              {/* <Article
-                html={data.contentfulAbout.profile?.childMarkdownRemark?.html}
-              /> */}
-              <div css={sns}>
-                <a
-                  href="https://github.com/ymdman"
-                  rel="noreferrer"
-                  target="_blank"
-                  css={anchor}
-                >
-                  <IconGitHub width={22} height={22} />
-                </a>
-                <a
-                  href="https://twitter.com/yama80059601"
-                  rel="noreferrer"
-                  target="_blank"
-                  css={anchor}
-                >
-                  <IconTwitter width={22} height={22} />
-                </a>
-              </div>
-            </div>
-          </div>
-        </Section>
-      </Body>
-    </Layout>
-  );
-};
-
-// export const query = graphql`
-//   query {
-//     contentfulAbout {
-//       profile {
-//         childMarkdownRemark {
-//           html
-//         }
-//       }
-//       site {
-//         childMarkdownRemark {
-//           html
-//         }
-//       }
-//     }
-//     file(relativePath: { eq: "avatar.jpg" }) {
-//       childImageSharp {
-//         fluid(maxWidth: 300) {
-//           ...GatsbyImageSharpFluid_withWebp
-//         }
-//       }
-//     }
-//   }
-// `;
 
 export default AboutPage;

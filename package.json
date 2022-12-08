@@ -13,6 +13,7 @@
     "prismjs": "^1.23.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-markdown": "^8.0.4",
     "react-tsparticles": "^1.18.11"
   },
   "devDependencies": {

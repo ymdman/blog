@@ -1,13 +1,15 @@
-import { useState, useLayoutEffect } from 'react';
+import { useState, useEffect, useLayoutEffect } from 'react';
 import { layout } from '../styles/settings';
 
 type Device = 'desktop' | 'mobile';
 
 const useDeviceChecked = (): Device => {
-  const [device, setDevice] = useState<Device>(
-    typeof window !== 'undefined' && window.innerWidth >= layout.threshold
-      ? 'desktop'
-      : 'mobile'
+  const [device, setDevice] = useState<Device>('mobile');
+
+  useEffect(
+    () =>
+      setDevice(window.innerWidth >= layout.threshold ? 'desktop' : 'mobile'),
+    [device]
   );
 
   useLayoutEffect(() => {

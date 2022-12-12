@@ -10,7 +10,7 @@ type Props = {
   pagePath?: string;
 };
 
-const SEO: React.FC<Props> = ({ description, lang, meta, title, pagePath }) => {
+const SEO: React.FC<Props> = ({ description, meta, title }) => {
   // const { site } = useStaticQuery(
   //   graphql`
   //     query {

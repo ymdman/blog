@@ -2,7 +2,7 @@
 
 [https://ymdman.com/](https://ymdman.com/)
 
-- Gatsby
+- Next.js
 - TypeScript
 - Emotion
 - Contentful

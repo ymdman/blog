@@ -1,52 +1,25 @@
 {
   "name": "blog",
-  "private": true,
-  "description": "blog",
   "version": "0.1.0",
-  "author": "ymdman",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
   "dependencies": {
-    "@emotion/react": "^11.1.5",
-    "contentful": "^9.2.13",
-    "contentful-management": "^10.21.5",
-    "emotion-reset": "^3.0.0",
-    "next": "^13.0.4",
-    "prismjs": "^1.23.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-markdown": "^8.0.4",
-    "react-tsparticles": "^1.18.11"
+    "next": "14.1.4",
+    "react": "^18",
+    "react-dom": "^18"
   },
   "devDependencies": {
-    "@storybook/addon-actions": "^6.2.1",
-    "@storybook/addon-essentials": "^6.2.1",
-    "@storybook/addon-links": "^6.2.1",
-    "@storybook/react": "^6.2.1",
-    "@types/node": "^14.14.10",
-    "@types/prismjs": "^1.16.2",
-    "@types/react": "^17.0.0",
-    "@types/react-dom": "^17.0.0",
-    "@typescript-eslint/eslint-plugin": "^4.9.0",
-    "@typescript-eslint/parser": "^4.9.0",
-    "contentful-typescript-codegen": "^3.3.0",
-    "eslint": "^7.14.0",
-    "eslint-config-prettier": "^6.15.0",
-    "eslint-loader": "^4.0.2",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-prettier": "^3.2.0",
-    "eslint-plugin-react": "^7.21.5",
-    "eslint-plugin-react-hooks": "^4.2.0",
-    "prettier": "2.1.2",
-    "typescript": "^4.1.2",
-    "typescript-styled-plugin": "^0.15.0"
-  },
-  "scripts": {
-    "build": "next build",
-    "dev": "next dev",
-    "typecheck": "tsc",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
-    "start": "next start",
-    "contentful-typescript-codegen": "contentful-typescript-codegen --output ./src/type/contentful.d.ts",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.1.4",
+    "eslint-config-prettier": "^9.1.0",
+    "typescript": "^5"
   }
 }

@@ -5,10 +5,34 @@ export default defineConfig({
   preflight: true,
 
   // Where to look for your css declarations
-  include: ['./src/**/*.{js,jsx,ts,tsx}', './pages/**/*.{js,jsx,ts,tsx}'],
+  include: ['./src/**/*.{js,jsx,ts,tsx}'],
 
   // Files to exclude
   exclude: [],
+
+  presets: [],
+
+  minify: true,
+
+  browserslist: ['last 2 versions', 'not dead', 'not < 2%'],
+
+  globalCss: {
+    html: {
+      fontSize: '62.5%',
+    },
+
+    body: {
+      fontFamily:
+        '"Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif',
+      fontSize: 'md',
+      lineHeight: 'md',
+      color: 'font.primary',
+    },
+
+    svg: {
+      fill: 'currentColor',
+    },
+  },
 
   // Useful for theme customization
   theme: {
@@ -41,6 +65,11 @@ export default defineConfig({
           md: { value: '1.6rem' },
           sm: { value: '1.4rem' },
           xs: { value: '1.1rem' },
+        },
+        lineHeights: {
+          sm: { value: 1.3 },
+          md: { value: 1.6 },
+          lg: { value: 2 },
         },
         zIndex: {
           particlesBackground: { value: -1 },

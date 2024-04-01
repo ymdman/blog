@@ -1,10 +1,9 @@
-import Image from 'next/image';
 import { css } from '../../styled-system/css';
 
 export default function Home() {
-  return (
-    <div className={css({ fontSize: '2xl', fontWeight: 'bold' })}>
-      Hello 🐼!
-    </div>
-  );
+  return <div className={styles}>Hello 🐼!</div>;
 }
+
+const styles = css({
+  fontWeight: { base: 'normal', desktop: 'bold' },
+});

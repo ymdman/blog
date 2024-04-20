@@ -16,6 +16,8 @@ export default defineConfig({
 
   browserslist: ['last 2 versions', 'not dead', 'not < 2%'],
 
+  // jsxFramework: 'react',
+
   globalCss: {
     html: {
       fontSize: '62.5%',

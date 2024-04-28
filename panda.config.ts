@@ -16,7 +16,7 @@ export default defineConfig({
 
   browserslist: ['last 2 versions', 'not dead', 'not < 2%'],
 
-  // jsxFramework: 'react',
+  jsxFramework: 'react',
 
   globalCss: {
     html: {
@@ -86,6 +86,16 @@ export default defineConfig({
 
     breakpoints: {
       desktop: '640px',
+    },
+  },
+
+  patterns: {
+    extend: {
+      stack: {
+        properties: {
+          as: { type: 'enum', value: ['header'] },
+        },
+      },
     },
   },
 

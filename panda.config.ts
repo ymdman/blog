@@ -93,7 +93,7 @@ export default defineConfig({
     extend: {
       stack: {
         properties: {
-          as: { type: 'enum', value: ['header'] },
+          as: { type: 'enum', value: ['header', 'footer', 'ul'] },
         },
       },
     },

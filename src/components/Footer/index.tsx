@@ -1,3 +1,1 @@
-export function Footer() {
-  return <footer>Footer</footer>;
-}
+export * from './Footer';

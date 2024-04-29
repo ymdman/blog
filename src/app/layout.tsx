@@ -1,10 +1,8 @@
 import type { Metadata } from 'next';
-// import { Inter } from 'next/font/google';
 import './globals.css';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
-
-// const inter = Inter({ subsets: ['latin'] });
+import { Container } from '../../styled-system/jsx';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -19,9 +17,11 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body>
-        <Header />
-        {children}
-        <Footer />
+        <Container maxWidth="1000px" paddingX={{ base: 15, desktop: 0 }}>
+          <Header />
+          {children}
+          <Footer />
+        </Container>
       </body>
     </html>
   );

@@ -21,11 +21,13 @@ export default defineConfig({
   globalCss: {
     html: {
       fontSize: '62.5%',
+      height: '100%',
     },
 
     body: {
       fontFamily:
         '"Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif',
+      height: '100%',
       fontSize: 'md',
       lineHeight: 'md',
       color: 'font.primary',

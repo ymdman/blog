@@ -3,7 +3,17 @@ import { Stack } from '../../../styled-system/jsx';
 
 export function Footer() {
   return (
-    <Stack as="footer" justifyContent="center" direction="row">
+    <Stack
+      as="footer"
+      alignItems="center"
+      justifyContent="center"
+      direction="row"
+      className={css({
+        position: 'sticky',
+        top: '100vh',
+        height: '40px',
+      })}
+    >
       <small
         className={css({
           base: { fontSize: 'xs' },

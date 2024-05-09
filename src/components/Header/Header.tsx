@@ -41,7 +41,7 @@ export function Header() {
         </p>
         <Stack as="ul" direction="row" gap={{ base: 20, desktop: 50 }}>
           <li>
-            <Link href="#" className={css(anchorStyle, navAnchorStyle)}>
+            <Link href="/about" className={css(anchorStyle, navAnchorStyle)}>
               About
             </Link>
           </li>

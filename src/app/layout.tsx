@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import { css } from '../../styled-system/css';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { Container } from '../../styled-system/jsx';
@@ -23,7 +24,11 @@ export default function RootLayout({
           paddingX={{ base: '15px', desktop: 0 }}
         >
           <Header />
-          {children}
+          <main
+            className={css({ height: 'calc(100% - 40px)', paddingTop: 70 })}
+          >
+            {children}
+          </main>
           <Footer />
         </Container>
       </body>

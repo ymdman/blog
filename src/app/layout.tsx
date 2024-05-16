@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { ApolloProviderWrapper } from './ApolloProviderWrapper';
 import './globals.css';
 import { css } from '../../styled-system/css';
 import { Header } from '../components/Header';
@@ -18,19 +19,21 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body>
-        <Container
-          height="100%"
-          maxWidth="1000px"
-          paddingX={{ base: '15px', desktop: 0 }}
-        >
-          <Header />
-          <main
-            className={css({ height: 'calc(100% - 40px)', paddingTop: 70 })}
+        <ApolloProviderWrapper>
+          <Container
+            height="100%"
+            maxWidth="1000px"
+            paddingX={{ base: '15px', desktop: 0 }}
           >
-            {children}
-          </main>
-          <Footer />
-        </Container>
+            <Header />
+            <main
+              className={css({ height: 'calc(100% - 40px)', paddingTop: 70 })}
+            >
+              {children}
+            </main>
+            <Footer />
+          </Container>
+        </ApolloProviderWrapper>
       </body>
     </html>
   );

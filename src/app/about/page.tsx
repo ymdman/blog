@@ -8,7 +8,7 @@ export async function getData() {
   const { data } = await client.query({
     query: gql`
       query About {
-        about(id: "") {
+        about(id: "1Q0Koa4MU3p52jL5yKvYOE") {
           profile
           site
         }
@@ -28,5 +28,7 @@ export async function getData() {
 export default async function Page() {
   const data = await getData();
 
-  return <main>Lorem ipsum dolor sit amet.</main>;
+  console.log(data.props.about.about.profile);
+
+  return <main>{data.props.about.about.profile}</main>;
 }

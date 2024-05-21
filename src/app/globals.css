@@ -1,1 +1,120 @@
+@import "../../styled-system/styles.css";
+
 @layer reset, base, tokens, recipes, utilities;
+
+.article {
+  & > * + p,
+  & > * + ul,
+  & > * + ol,
+  & > * + div,
+  & > * + table {
+    margin-top: 15px;
+  }
+
+  & h2 {
+    padding-bottom: 10px;
+    font-size: var(--font-sizes-3xl);
+    font-weight: bold;
+    line-height: 1.4;
+    border-bottom: solid 1px var(--colors-border-primary);
+  }
+
+  & h2 + * {
+    margin-top: 15px;
+  }
+
+  & * + h2 {
+    margin-top: 80px;
+  }
+
+  & h3 {
+    margin-top: 30px;
+    font-size: var(--font-sizes-2xl);
+    font-weight: bold;
+  }
+
+  & h3 + * {
+    margin-top: 5px;
+  }
+
+  & ul,
+  & ol {
+    margin-left: 20px;
+  }
+
+  & > ul {
+    list-style: disc;
+  }
+
+  & > ul > li > ul {
+    list-style: circle;
+  }
+
+  & > ol {
+    list-style: decimal;
+  }
+
+  & b {
+    padding: 0 3px 1px;
+    color: #fff;
+    background-color: var(--colors-theme);
+    font-weight: bold;
+  }
+
+  & a {
+    color: var(--colors-anchor);
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  & table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid var(--colors-border-secondary);
+  }
+
+  & th,
+  & td {
+    padding: 5px 10px;
+    border: 1px solid var(--colors-border-secondary);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    & h2 {
+      border-bottom-color: var(--colors-border-secondary);
+    }
+  }
+
+  @media screen and (max-width: 640px) {
+    & > * + p,
+    & > * + ul,
+    & > * + ol,
+    & > * + div {
+      margin-top: 15px;
+    }
+
+    & h2 {
+      font-size: var(--font-sizes-xl);
+    }
+
+    & h2 + * {
+      margin-top: 10px;
+    }
+
+    & * + h2 {
+      margin-top: 45px;
+    }
+
+    & h3 {
+      margin-top: 25px;
+      font-size: var(--font-sizes-lg);
+    }
+
+    & h3 + * {
+      margin-top: 5px;
+    }
+  }
+}

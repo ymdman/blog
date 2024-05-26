@@ -18,11 +18,11 @@ export function Header() {
         direction="row"
         justifyContent="space-between"
         alignItems="center"
-        maxWidth="1000px"
         height="inherit"
         marginLeft="auto"
         marginRight="auto"
-        paddingX={{ base: '15px', desktop: 0 }}
+        paddingRight={{ base: '15px', desktop: '25px' }}
+        paddingLeft={{ base: '15px', desktop: '25px' }}
       >
         <p>
           <Link

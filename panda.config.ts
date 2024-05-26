@@ -10,7 +10,7 @@ export default defineConfig({
   // // Files to exclude
   exclude: [],
 
-  presets: [],
+  // presets: [],
 
   minify: true,
 

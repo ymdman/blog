@@ -22,7 +22,7 @@ export default function RootLayout({
         <ApolloProviderWrapper>
           <Container
             height="100%"
-            maxWidth="1000px"
+            maxWidth="620px"
             paddingX={{ base: '15px', desktop: 0 }}
           >
             <Header />

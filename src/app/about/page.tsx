@@ -3,6 +3,7 @@
 import { gql } from '@apollo/client';
 import createApolloClient from '../../../apollo-client';
 import { Article } from '../../components/Article';
+import { Heading } from '../../components/Heading';
 
 export async function getData() {
   const client = createApolloClient();
@@ -33,6 +34,7 @@ export default async function Page() {
 
   return (
     <main>
+      <Heading as="h1">About</Heading>
       <Article markdown={data.props.about.about.site} />
     </main>
   );

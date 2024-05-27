@@ -22,12 +22,15 @@ export default function RootLayout({
         <ApolloProviderWrapper>
           <Container
             height="100%"
-            maxWidth="620px"
-            paddingX={{ base: '15px', desktop: 0 }}
+            maxWidth={'2xl'}
+            paddingX={{ base: 3.5, desktop: 0 }}
           >
             <Header />
             <main
-              className={css({ height: 'calc(100% - 40px)', paddingTop: 70 })}
+              className={css({
+                height: 'calc(100% - var(--footer-height))',
+                paddingTop: 'var(--header-height)',
+              })}
             >
               {children}
             </main>

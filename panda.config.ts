@@ -20,7 +20,6 @@ export default defineConfig({
 
   globalCss: {
     html: {
-      fontSize: '62.5%',
       height: '100%',
     },
 
@@ -63,17 +62,17 @@ export default defineConfig({
           },
           anchor: { value: '#5277fd' },
         },
-        fontSizes: {
-          '5xl': { value: '3.6rem' },
-          '4xl': { value: '3.2rem' },
-          '3xl': { value: '2.8rem' },
-          '2xl': { value: '2.4rem' },
-          xl: { value: '2rem' },
-          lg: { value: '1.8rem' },
-          md: { value: '1.6rem' },
-          sm: { value: '1.4rem' },
-          xs: { value: '1.1rem' },
-        },
+        // fontSizes: {
+        //   '5xl': { value: '3.6rem' },
+        //   '4xl': { value: '3.2rem' },
+        //   '3xl': { value: '2.8rem' },
+        //   '2xl': { value: '2.4rem' },
+        //   xl: { value: '2rem' },
+        //   lg: { value: '1.8rem' },
+        //   md: { value: '1.6rem' },
+        //   sm: { value: '1.4rem' },
+        //   xs: { value: '1.1rem' },
+        // },
         lineHeights: {
           sm: { value: 1.3 },
           md: { value: 1.6 },

@@ -30,7 +30,7 @@ export async function getData() {
 export default async function Page() {
   const data = await getData();
 
-  console.log(data.props.about.about.profile);
+  console.log(data.props.about.about.site);
 
   return (
     <main>

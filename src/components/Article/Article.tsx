@@ -7,7 +7,7 @@ type ArticleProps = {
 export function Article({ markdown }: ArticleProps) {
   return (
     <div className="article">
-      <Markdown>{markdown}</Markdown>;
+      <Markdown>{markdown}</Markdown>
     </div>
   );
 }

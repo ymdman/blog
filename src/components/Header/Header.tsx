@@ -10,7 +10,7 @@ export function Header() {
         top: 0,
         left: 0,
         width: '100%',
-        height: '70px',
+        height: 'var(--header-height)',
       })}
     >
       <Stack
@@ -21,8 +21,8 @@ export function Header() {
         height="inherit"
         marginLeft="auto"
         marginRight="auto"
-        paddingRight={{ base: '15px', desktop: '25px' }}
-        paddingLeft={{ base: '15px', desktop: '25px' }}
+        paddingRight={{ base: 3.5, desktop: 7 }}
+        paddingLeft={{ base: 3.5, desktop: 7 }}
       >
         <p>
           <Link
@@ -39,7 +39,7 @@ export function Header() {
             ymdman.com
           </Link>
         </p>
-        <Stack as="ul" direction="row" gap={{ base: 20, desktop: 50 }}>
+        <Stack as="ul" direction="row" gap={{ base: 5, desktop: 12 }}>
           <li>
             <Link href="/about" className={css(anchorStyle, navAnchorStyle)}>
               About

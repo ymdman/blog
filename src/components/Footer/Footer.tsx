@@ -11,13 +11,12 @@ export function Footer() {
       className={css({
         position: 'sticky',
         top: '100vh',
-        height: '40px',
+        height: 'var(--footer-height)',
       })}
     >
       <small
         className={css({
-          base: { fontSize: 'xs' },
-          desktop: { fontSize: 'sm' },
+          fontSize: 'xs',
         })}
       >
         © {new Date().getFullYear()} ymdman.com All Right Reserved.

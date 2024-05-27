@@ -7,7 +7,7 @@ export default function Home() {
     <Stack justifyContent="center" alignItems="center" height="100%">
       <p
         className={css({
-          fontSize: { base: '3xl', desktop: '5xl' },
+          fontSize: { base: '3xl', desktop: '6xl' },
           fontWeight: 'bold',
         })}
       >

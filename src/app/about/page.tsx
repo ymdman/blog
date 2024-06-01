@@ -34,7 +34,9 @@ export default async function Page() {
 
   return (
     <main>
-      <Heading as="h1">About</Heading>
+      <Heading as="h1" size="lg">
+        About
+      </Heading>
       <Article markdown={data.props.about.about.site} />
     </main>
   );

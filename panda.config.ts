@@ -46,21 +46,21 @@ export default defineConfig({
     extend: {
       tokens: {
         colors: {
-          theme: { value: '#f30e05' },
+          theme: { value: '{colors.blue.700}' },
           font: {
-            primary: { value: '#242424' },
-            secondary: { value: '#f3f3f3' },
+            primary: { value: '{colors.neutral.800}' },
+            secondary: { value: '{colors.neutral.100}' },
           },
           background: {
-            primary: { value: '#ececec' },
-            secondary: { value: '#151515' },
-            tertiary: { value: '#333' },
+            primary: { value: '{colors.neutral.200}' },
+            secondary: { value: '{colors.neutral.900}' },
+            tertiary: { value: '{colors.neutral.700}' },
           },
           border: {
-            primary: { value: '#e2e2e2' },
-            secondary: { value: '#333' },
+            primary: { value: '{colors.neutral.400}' },
+            secondary: { value: '{colors.neutral.800}' },
           },
-          anchor: { value: '#5277fd' },
+          anchor: { value: '{colors.blue.500}' },
         },
         // fontSizes: {
         //   '5xl': { value: '3.6rem' },

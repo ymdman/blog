@@ -1,6 +1,12 @@
+import type { Metadata } from 'next';
 import { css } from '../../styled-system/css';
 import { Stack } from '../../styled-system/jsx';
 import { ParticlesBackground } from '../components/ParticlesBackground';
+
+export const metadata: Metadata = {
+  title: 'ymdman.com',
+  description: '',
+};
 
 export default function Home() {
   return (

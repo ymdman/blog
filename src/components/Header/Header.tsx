@@ -46,8 +46,8 @@ export function Header() {
             </Link>
           </li>
           <li>
-            <Link href="#" className={css(anchorStyle, navAnchorStyle)}>
-              Blog
+            <Link href="articles" className={css(anchorStyle, navAnchorStyle)}>
+              Articles
             </Link>
           </li>
           <li>

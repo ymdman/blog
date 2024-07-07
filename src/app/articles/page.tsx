@@ -9,50 +9,66 @@ import { Stack } from '../../../styled-system/jsx';
 import { Article } from '../../components/Article';
 import { Heading } from '../../components/Heading';
 import Link from 'next/link';
+import { BlogPostCollection as BlogPostCollectionData } from '../../../src/gql/graphql';
 
 export const metadata: Metadata = {
   title: 'Articles',
   description: '',
 };
 
-export async function getData() {
+type BlogPostCollection = {
+  blogPostCollection: BlogPostCollectionData | null;
+  error?: string;
+};
+
+export async function getData(): Promise<BlogPostCollection> {
   const client = createApolloClient();
-  const { data } = await client.query({
-    query: gql`
-      query BlogPostCollection {
-        blogPostCollection {
-          total
-          items {
-            title
-            sys {
-              id
+
+  try {
+    const { data } = await client.query({
+      query: gql`
+        query BlogPostCollection {
+          blogPostCollection {
+            total
+            items {
+              title
+              sys {
+                id
+              }
             }
           }
         }
-      }
-    `,
-  });
+      `,
+    });
 
-  return {
-    props: {
-      blogPostCollection: data,
-    },
-  };
+    return {
+      blogPostCollection: data.blogPostCollection,
+    };
+  } catch (error) {
+    console.error('Error fetching data:', error);
+
+    return {
+      blogPostCollection: null,
+      error: 'エラーが発生しました。',
+    };
+  }
 }
 
 export default async function Page() {
-  const data = await getData();
+  const { blogPostCollection, error } = await getData();
 
-  console.log(data.props.blogPostCollection.blogPostCollection);
+  if (error) {
+    return <p>{error}</p>;
+  }
 
   return (
     <>
       <Heading as="h1" size="5xl">
         Articles
       </Heading>
-      {data.props.blogPostCollection.blogPostCollection.items.map(item => (
-        <Link href={`/articles/${item.sys.id}`} key={item.sys.id}>
-          <div>{item.title}</div>
+      {blogPostCollection?.items.map(blogPost => (
+        <Link href={`/articles/${blogPost?.sys.id}`} key={blogPost?.sys.id}>
+          <div>{blogPost?.title}</div>
         </Link>
       ))}
     </>

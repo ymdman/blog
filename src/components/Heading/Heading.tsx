@@ -15,6 +15,7 @@ export function Heading({ size, as: CustomTag, children }: HeadingProps) {
 const headingRecipe = cva({
   base: {
     fontWeight: 'bold',
+    whiteSpace: 'normal',
   },
   variants: {
     size: {

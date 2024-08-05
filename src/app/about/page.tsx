@@ -13,12 +13,12 @@ export const metadata: Metadata = {
   description: '',
 };
 
-type About = {
+type AboutData = {
   about: PageAboutData | null;
   error?: string;
 };
 
-export async function getData(): Promise<About> {
+async function fetchAboutData(): Promise<AboutData> {
   const client = createApolloClient();
 
   try {
@@ -47,7 +47,7 @@ export async function getData(): Promise<About> {
 }
 
 export default async function Page() {
-  const { about, error } = await getData();
+  const { about, error } = await fetchAboutData();
 
   if (error) {
     return <p>{error}</p>;

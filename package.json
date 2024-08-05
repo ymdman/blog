@@ -4,8 +4,9 @@
   "private": true,
   "scripts": {
     "prepare": "panda codegen",
-    "dev": "next dev",
-    "build": "next build",
+    "styled-system-gen": "npx panda",
+    "dev": "npm run styled-system-gen && next dev",
+    "build": "npm run styled-system-gen && next build",
     "start": "next start",
     "lint": "next lint",
     "codegen": "graphql-codegen --config codegen.ts"

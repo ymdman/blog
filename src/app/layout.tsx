@@ -28,13 +28,12 @@ export default function RootLayout({
             <Header />
             <main
               className={css({
-                height: 'calc(100% - var(--footer-height))',
-                paddingTop: 'var(--header-height)',
+                paddingTop: 32,
               })}
             >
               {children}
             </main>
-            <Footer />
+            <Footer className={css({ marginTop: 8 })} />
           </Container>
         </ApolloProviderWrapper>
       </body>

@@ -66,11 +66,13 @@ export default async function Page() {
       <Heading as="h1" size="5xl">
         Blog
       </Heading>
-      {blogPostCollection?.items.map(blogPost => (
-        <Link href={`/blog/${blogPost?.sys.id}`} key={blogPost?.sys.id}>
-          <div>{blogPost?.title}</div>
-        </Link>
-      ))}
+      <Stack gap={6} marginTop={6}>
+        {blogPostCollection?.items.map(blogPost => (
+          <Link href={`/blog/${blogPost?.sys.id}`} key={blogPost?.sys.id}>
+            {blogPost?.title}
+          </Link>
+        ))}
+      </Stack>
     </>
   );
 }

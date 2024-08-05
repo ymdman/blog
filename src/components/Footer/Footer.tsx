@@ -1,18 +1,24 @@
 import { css } from '../../../styled-system/css';
 import { Stack } from '../../../styled-system/jsx';
 
-export function Footer() {
+type FooterProps = {
+  className?: string;
+};
+
+export function Footer({ className }: FooterProps) {
+  const footerStyle = css({
+    position: 'sticky',
+    top: '100vh',
+    height: 'var(--footer-height)',
+  });
+
   return (
     <Stack
       as="footer"
       alignItems="center"
       justifyContent="center"
       direction="row"
-      className={css({
-        position: 'sticky',
-        top: '100vh',
-        height: 'var(--footer-height)',
-      })}
+      className={`${footerStyle} ${className}`}
     >
       <small
         className={css({

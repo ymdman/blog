@@ -4,6 +4,8 @@
 
 - Next.js
 - TypeScript
-- Emotion
+- GraphQL
+- Apollo Client
+- PandaCSS
 - Contentful
 - Netlify

@@ -1,42 +1,45 @@
+// {
+//   "env": {
+//     "browser": true,
+//     "es6": true,
+//     "node": true
+//   },
+
+//   "extends": [
+//     "eslint:recommended",
+//     "plugin:react/recommended",
+//     "plugin:react-hooks/recommended",
+//     "plugin:@typescript-eslint/eslint-recommended",
+//     "plugin:prettier/recommended",
+//     "prettier/@typescript-eslint",
+//     "prettier/react"
+//   ],
+
+//   "parser": "@typescript-eslint/parser",
+
+//   "parserOptions": {
+//     "ecmaFeatures": {
+//       "jsx": true
+//     },
+//     "ecmaVersion": 2018,
+//     "sourceType": "module"
+//   },
+
+//   "settings": {
+//     "react": {
+//       "version": "detect"
+//     }
+//   },
+
+//   "plugins": [
+//     "react",
+//     "@typescript-eslint"
+//   ],
+
+//   "rules": {
+//     "react/prop-types": "off"
+//   }
+// }
 {
-  "env": {
-    "browser": true,
-    "es6": true,
-    "node": true
-  },
-
-  "extends": [
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "plugin:react-hooks/recommended",
-    "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:prettier/recommended",
-    "prettier/@typescript-eslint",
-    "prettier/react"
-  ],
-
-  "parser": "@typescript-eslint/parser",
-
-  "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true
-    },
-    "ecmaVersion": 2018,
-    "sourceType": "module"
-  },
-
-  "settings": {
-    "react": {
-      "version": "detect"
-    }
-  },
-
-  "plugins": [
-    "react",
-    "@typescript-eslint"
-  ],
-
-  "rules": {
-    "react/prop-types": "off"
-  }
+  "extends": ["next", "prettier"]
 }

@@ -16,7 +16,7 @@ type Params = {
 };
 
 export async function generateMetadata({ params }: Params) {
-  const { blogPost } = await getData(params.id);
+  const { blogPost } = await fetchBlogPostData(params.id);
 
   const metadata: Metadata = {
     title: blogPost.title,
@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: Params) {
   return metadata;
 }
 
-export async function getData(id: string) {
+export async function fetchBlogPostData(id: string) {
   const client = createApolloClient();
 
   try {
@@ -57,7 +57,7 @@ export async function getData(id: string) {
 export default async function Page({ params }: Params) {
   console.log();
 
-  const { blogPost, error } = await getData(params.id);
+  const { blogPost, error } = await fetchBlogPostData(params.id);
 
   if (error) {
     return <p>{error}</p>;

@@ -21,7 +21,7 @@ type BlogPostCollection = {
   error?: string;
 };
 
-export async function getData(): Promise<BlogPostCollection> {
+export async function fetchBlogPostCollectionData(): Promise<BlogPostCollection> {
   const client = createApolloClient();
 
   try {
@@ -55,7 +55,7 @@ export async function getData(): Promise<BlogPostCollection> {
 }
 
 export default async function Page() {
-  const { blogPostCollection, error } = await getData();
+  const { blogPostCollection, error } = await fetchBlogPostCollectionData();
 
   if (error) {
     return <p>{error}</p>;

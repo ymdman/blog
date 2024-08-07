@@ -13,9 +13,9 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * Therefore it is highly recommended to use the babel or swc plugin for production.
  */
 const documents = {
-    "\n      query About {\n        about(id: \"1Q0Koa4MU3p52jL5yKvYOE\") {\n          profile\n          site\n        }\n      }\n    ": types.AboutDocument,
-    "\n      query BlogPost {\n        blogPost(id: \"\") {\n          title\n          content\n        }\n      }\n    ": types.BlogPostDocument,
-    "\n      query BlogPostCollection {\n        blogPostCollection {\n          total\n          items {\n            title\n            sys {\n              id\n            }\n          }\n        }\n      }\n    ": types.BlogPostCollectionDocument,
+    "\n        query About {\n          about(id: \"1Q0Koa4MU3p52jL5yKvYOE\") {\n            profile\n            site\n          }\n        }\n      ": types.AboutDocument,
+    "\n        query BlogPost {\n          blogPost(id: \"\") {\n            title\n            content\n          }\n        }\n      ": types.BlogPostDocument,
+    "\n        query BlogPostCollection {\n          blogPostCollection {\n            total\n            items {\n              title\n              sys {\n                id\n              }\n            }\n          }\n        }\n      ": types.BlogPostCollectionDocument,
 };
 
 /**
@@ -35,15 +35,15 @@ export function graphql(source: string): unknown;
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n      query About {\n        about(id: \"1Q0Koa4MU3p52jL5yKvYOE\") {\n          profile\n          site\n        }\n      }\n    "): (typeof documents)["\n      query About {\n        about(id: \"1Q0Koa4MU3p52jL5yKvYOE\") {\n          profile\n          site\n        }\n      }\n    "];
+export function graphql(source: "\n        query About {\n          about(id: \"1Q0Koa4MU3p52jL5yKvYOE\") {\n            profile\n            site\n          }\n        }\n      "): (typeof documents)["\n        query About {\n          about(id: \"1Q0Koa4MU3p52jL5yKvYOE\") {\n            profile\n            site\n          }\n        }\n      "];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n      query BlogPost {\n        blogPost(id: \"\") {\n          title\n          content\n        }\n      }\n    "): (typeof documents)["\n      query BlogPost {\n        blogPost(id: \"\") {\n          title\n          content\n        }\n      }\n    "];
+export function graphql(source: "\n        query BlogPost {\n          blogPost(id: \"\") {\n            title\n            content\n          }\n        }\n      "): (typeof documents)["\n        query BlogPost {\n          blogPost(id: \"\") {\n            title\n            content\n          }\n        }\n      "];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n      query BlogPostCollection {\n        blogPostCollection {\n          total\n          items {\n            title\n            sys {\n              id\n            }\n          }\n        }\n      }\n    "): (typeof documents)["\n      query BlogPostCollection {\n        blogPostCollection {\n          total\n          items {\n            title\n            sys {\n              id\n            }\n          }\n        }\n      }\n    "];
+export function graphql(source: "\n        query BlogPostCollection {\n          blogPostCollection {\n            total\n            items {\n              title\n              sys {\n                id\n              }\n            }\n          }\n        }\n      "): (typeof documents)["\n        query BlogPostCollection {\n          blogPostCollection {\n            total\n            items {\n              title\n              sys {\n                id\n              }\n            }\n          }\n        }\n      "];
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};

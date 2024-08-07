@@ -1,5 +1,3 @@
-// 'use client';
-
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import { gql } from '@apollo/client';
@@ -11,17 +9,12 @@ import { Heading } from '../../components/Heading';
 import Link from 'next/link';
 import { BlogPostCollection as BlogPostCollectionData } from '../../../src/gql/graphql';
 
-export const metadata: Metadata = {
-  title: 'Blog',
-  description: '',
-};
-
 type BlogPostCollection = {
   blogPostCollection: BlogPostCollectionData | null;
   error?: string;
 };
 
-export async function fetchBlogPostCollectionData(): Promise<BlogPostCollection> {
+async function fetchBlogPostCollectionData(): Promise<BlogPostCollection> {
   const client = createApolloClient();
 
   try {
@@ -52,6 +45,15 @@ export async function fetchBlogPostCollectionData(): Promise<BlogPostCollection>
       error: 'エラーが発生しました。',
     };
   }
+}
+
+export async function generateMetadata() {
+  const metadata: Metadata = {
+    title: 'Blog',
+    description: '',
+  };
+
+  return metadata;
 }
 
 export default async function Page() {

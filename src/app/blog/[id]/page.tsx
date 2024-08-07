@@ -1,32 +1,18 @@
-// 'use client';
-
 import type { Metadata } from 'next';
-
-import Image from 'next/image';
 import { gql } from '@apollo/client';
 import createApolloClient from '../../../../apollo-client';
-import { css } from '../../../styled-system/css';
-import { Stack } from '../../../styled-system/jsx';
 import { Article } from '../../../components/Article';
 import { Heading } from '../../../components/Heading';
-import Link from 'next/link';
 
-type Params = {
-  params: { id: string };
+type BlogPostData = {
+  blogPost: {
+    title: string;
+    content: string;
+  } | null;
+  error?: string;
 };
 
-export async function generateMetadata({ params }: Params) {
-  const { blogPost } = await fetchBlogPostData(params.id);
-
-  const metadata: Metadata = {
-    title: blogPost.title,
-    description: '',
-  };
-
-  return metadata;
-}
-
-export async function fetchBlogPostData(id: string) {
+async function fetchBlogPostData(id: string): Promise<BlogPostData> {
   const client = createApolloClient();
 
   try {
@@ -54,9 +40,22 @@ export async function fetchBlogPostData(id: string) {
   }
 }
 
-export default async function Page({ params }: Params) {
-  console.log();
+type Params = {
+  params: { id: string };
+};
 
+export async function generateMetadata({ params }: Params) {
+  const { blogPost } = await fetchBlogPostData(params.id);
+
+  const metadata: Metadata = {
+    title: blogPost?.title,
+    description: '',
+  };
+
+  return metadata;
+}
+
+export default async function Page({ params }: Params) {
   const { blogPost, error } = await fetchBlogPostData(params.id);
 
   if (error) {
@@ -66,9 +65,9 @@ export default async function Page({ params }: Params) {
   return (
     <>
       <Heading as="h1" size="5xl">
-        {blogPost.title}
+        {blogPost?.title}
       </Heading>
-      <Article markdown={blogPost.content} />
+      <Article markdown={blogPost?.content ?? ''} />
     </>
   );
 }

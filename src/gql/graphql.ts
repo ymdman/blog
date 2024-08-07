@@ -30,8 +30,9 @@ export type Scalars = {
 };
 
 /** アバウトページ [See type definition](https://app.contentful.com/spaces/eocxbw5apjo8/content_types/about) */
-export type About = Entry & {
+export type About = Entry & _Node & {
   __typename?: 'About';
+  _id: Scalars['ID']['output'];
   contentfulMetadata: ContentfulMetadata;
   linkedFrom?: Maybe<AboutLinkingCollections>;
   profile?: Maybe<Scalars['String']['output']>;
@@ -311,8 +312,9 @@ export enum AssetOrder {
 }
 
 /** ブログの記事 [See type definition](https://app.contentful.com/spaces/eocxbw5apjo8/content_types/blogPost) */
-export type BlogPost = Entry & {
+export type BlogPost = Entry & _Node & {
   __typename?: 'BlogPost';
+  _id: Scalars['ID']['output'];
   categoryCollection?: Maybe<BlogPostCategoryCollection>;
   content?: Maybe<Scalars['String']['output']>;
   contentfulMetadata: ContentfulMetadata;
@@ -465,8 +467,9 @@ export enum BlogPostOrder {
 }
 
 /** カテゴリー [See type definition](https://app.contentful.com/spaces/eocxbw5apjo8/content_types/category) */
-export type Category = Entry & {
+export type Category = Entry & _Node & {
   __typename?: 'Category';
+  _id: Scalars['ID']['output'];
   contentfulMetadata: ContentfulMetadata;
   linkedFrom?: Maybe<CategoryLinkingCollections>;
   name?: Maybe<Scalars['String']['output']>;
@@ -594,7 +597,7 @@ export type ContentfulMetadataTagsFilter = {
 
 /**
  * Represents a tag entity for finding and organizing content easily.
- *     Find out more here: https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/content-tags
+ *       Find out more here: https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/content-tags
  */
 export type ContentfulTag = {
   __typename?: 'ContentfulTag';

@@ -13,12 +13,12 @@ export const metadata: Metadata = {
   description: '',
 };
 
-type AboutData = {
+type About = {
   about: PageAboutData | null;
   error?: string;
 };
 
-async function fetchAboutData(): Promise<AboutData> {
+async function fetchAboutData(): Promise<About> {
   const client = createApolloClient();
 
   try {
